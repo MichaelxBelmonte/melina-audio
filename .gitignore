@@ -1,0 +1,29 @@
+# Gradle and Android Studio
+.gradle/
+.idea/
+**/build/
+*.iml
+local.properties
+
+# Local credentials and signing material
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.pem
+
+# Generated and local data
+/captures/
+/reports/
+/*.apk
+/*.aab
+/Report_AI_*
+/scripts/update_report_model_audit.py
+**/__pycache__/
+*.py[cod]
+.DS_Store
+
+# Native build output
+.cxx/
+externalNativeBuild/

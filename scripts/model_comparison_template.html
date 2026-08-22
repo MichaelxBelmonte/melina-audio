@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Michelina · Model comparison</title>
+  <style>
+    :root { color-scheme: dark; --bg:#050505; --panel:#101010; --line:#2d2d2d; --text:#f2f2ee; --muted:#999995; --cyan:#52cdff; --green:#54e691; --amber:#ffbe54; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font:15px/1.5 Inter,system-ui,sans-serif; }
+    main { width:min(1060px,calc(100% - 28px)); margin:36px auto 70px; }
+    header { display:flex; justify-content:space-between; align-items:end; gap:20px; border-bottom:1px solid var(--line); padding-bottom:18px; }
+    h1 { margin:0; font-size:clamp(25px,4vw,46px); letter-spacing:-.04em; }
+    .tag,.meta { font:700 11px ui-monospace,monospace; letter-spacing:.09em; color:var(--muted); }
+    .tag { color:var(--green); }
+    .intro { max-width:760px; margin:24px 0 28px; color:#c5c5c0; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+    article { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:16px; }
+    article.original { grid-column:1/-1; border-color:#4a4a4a; }
+    h2 { margin:0 0 3px; font:700 13px ui-monospace,monospace; letter-spacing:.07em; }
+    p { margin:5px 0 12px; color:var(--muted); }
+    audio { width:100%; height:38px; }
+    .fast { color:var(--green); } .lab { color:var(--amber); } .full { color:var(--cyan); }
+    .method { margin-top:20px; padding:16px; border:1px solid var(--line); border-radius:8px; color:var(--muted); }
+    ol { margin:8px 0 0; padding-left:20px; } li+li { margin-top:6px; }
+    code { color:var(--cyan); }
+    @media(max-width:700px){ .grid{grid-template-columns:1fr} header{align-items:start;flex-direction:column} }
+  </style>
+</head>
+<body>
+<main>
+  <header><div><div class="tag">EQUAL INPUT · PIXEL 8 PRO</div><h1>Model comparison</h1></div><div class="meta">48 KHZ · PCM16 · MONO</div></header>
+  <p class="intro">Every player contains exactly the same raw recording. Gain, presence, and weak voice are set to zero, so only the denoiser changes. Use the same volume and headphones; compare intelligibility, naturalness, and listening fatigue rather than loudness.</p>
+  <section class="grid">
+    <article class="original"><h2>ORIGINAL RAW</h2><p>Unprocessed control.</p><audio controls preload="metadata" src="input.wav"></audio></article>
+    <article><h2 class="fast">GTCRN FAST</h2><p>Daily default with maximum real-time headroom.</p><audio controls preload="metadata" src="output_gtcrn_fast.wav"></audio></article>
+    <article><h2 class="fast">RNNOISE NATIVE</h2><p>Very lightweight full-band Xiph baseline for steady noise.</p><audio controls preload="metadata" src="output_rnnoise_native.wav"></audio></article>
+    <article><h2>UL-UNAS STREAM</h2><p>Compact, stateful 2026 challenger.</p><audio controls preload="metadata" src="output_ulunas_stream.wav"></audio></article>
+    <article><h2 class="full">DEEPFILTERNET3 HQ</h2><p>Full-band ERB and deep filtering through libDF.</p><audio controls preload="metadata" src="output_deepfilter3_hq.wav"></audio></article>
+    <article><h2>DPDFNET2 BALANCED</h2><p>Noisy/daily candidate; monitor LOAD on the phone.</p><audio controls preload="metadata" src="output_dpdfnet2_balanced.wav"></audio></article>
+    <article><h2>DPDFNET4 STRONG</h2><p>Stronger reduction with less thermal headroom.</p><audio controls preload="metadata" src="output_dpdfnet4_strong.wav"></audio></article>
+    <article><h2 class="lab">DPDFNET8 LAB</h2><p>Experimental quality mode that may exceed the real-time budget.</p><audio controls preload="metadata" src="output_dpdfnet8_speech.wav"></audio></article>
+    <article><h2 class="full">DPDFNET2 FULLBAND 48K</h2><p>Full-band mode; very demanding when the Pixel is hot.</p><audio controls preload="metadata" src="output_dpdfnet_hq.wav"></audio></article>
+    <article><h2>CLASSIC DSP</h2><p>Baseline without a neural network.</p><audio controls preload="metadata" src="output_classic_dsp.wav"></audio></article>
+  </section>
+  <section class="method"><strong>Quick protocol</strong><ol><li>Listen to a difficult sentence in RAW, then every output without changing the volume.</li><li>Score understood words, naturalness, and metallic discomfort from 1–5.</li><li>Open <code>benchmark.csv</code>: a model above 75% has little headroom; above 100% is not sustainable in real time for that run.</li><li>CPU figures do not measure perceived quality; the final choice must include the intended listener.</li></ol></section>
+</main>
+</body>
+</html>
