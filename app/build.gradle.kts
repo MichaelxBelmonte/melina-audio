@@ -16,7 +16,7 @@ android {
         versionName = "0.13.0"
 
         ndk {
-            abiFilters += "arm64-v8a"
+            abiFilters += listOf("arm64-v8a", "x86_64")
         }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -62,6 +62,7 @@ kotlin {
 }
 
 dependencies {
+    implementation(project(":audio-core"))
     implementation(files("libs/sherpa-onnx-1.13.6.aar"))
     implementation(files("libs/onnxruntime-java-android-1.27.0-ort1.27.1.aar"))
     implementation("androidx.core:core-ktx:1.17.0")

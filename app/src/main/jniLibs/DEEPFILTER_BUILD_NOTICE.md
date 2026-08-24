@@ -26,7 +26,7 @@ cargo build --release --target aarch64-linux-android \
 ```
 
 The Android NDK clang linker and archiver must be configured for the Rust target. Exported C API
-symbols used by Michelina are `df_create`, `df_get_frame_length`, `df_process_frame`,
+symbols used by Melina are `df_create`, `df_get_frame_length`, `df_process_frame`,
 `df_set_atten_lim`, `df_set_post_filter_beta`, and `df_free`.
 
 SHA-256 of the distributed library:

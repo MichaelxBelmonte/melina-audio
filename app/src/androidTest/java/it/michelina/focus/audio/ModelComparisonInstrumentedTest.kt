@@ -38,7 +38,7 @@ class ModelComparisonInstrumentedTest {
             "backend,frames,frame_ms,average_dsp_ms,peak_dsp_ms,budget_percent,output_peak",
         )
 
-        for (backend in ProcessorBackend.entries) {
+        for (backend in ProcessorBackend.entries.filter(AndroidPlatformCapabilities::supports)) {
             val processor = createProcessor(context, backend)
             try {
                 val input = ShortArray(processor.frameSizeSamples)
@@ -109,8 +109,7 @@ class ModelComparisonInstrumentedTest {
     ): RealtimeAudioProcessor = when (backend) {
         ProcessorBackend.CLASSIC_DSP -> SpectralSpeechEnhancer(
             sampleRate = 48_000,
-            context = context,
-            voiceDetectorBackend = VoiceDetectorBackend.SILERO,
+            voiceDetector = NeuralVoiceDetector(context, 48_000, VoiceDetectorBackend.SILERO),
         )
         ProcessorBackend.DPDFNET_HQ -> NeuralSpeechEnhancer(
             context,

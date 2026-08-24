@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Analyze Michelina Focus session exports without trusting the in-app summary."""
+"""Analyze Melina session exports without trusting the in-app summary."""
 
 from __future__ import annotations
 
@@ -249,7 +249,7 @@ def write_html(rows: list[dict[str, object]], destination: Path) -> None:
         )
     document = f"""<!doctype html>
 <html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
-<title>Michelina · Report Pixel</title>
+<title>Melina · Report Pixel</title>
 <style>
 body{{margin:0;background:#080808;color:#eee;font:14px ui-monospace,SFMono-Regular,monospace}}
 main{{max-width:1500px;margin:auto;padding:28px}} h1{{font:700 26px system-ui;margin:0 0 8px}}

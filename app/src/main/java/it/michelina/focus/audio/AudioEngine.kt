@@ -1,6 +1,8 @@
 package it.michelina.focus.audio
 
+import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager
 import android.media.AudioAttributes
 import android.media.AudioDeviceCallback
 import android.media.AudioDeviceInfo
@@ -93,7 +95,7 @@ class AudioEngine(
         val options = mutableListOf(
             AudioInputOption(
                 key = AUTO_INPUT_KEY,
-                label = "Automatic · USB first, then Pixel",
+                label = "Automatic · USB first, then built-in microphone",
                 detail = "Recommended: use a USB-C receiver when connected.",
                 automatic = true,
             ),
@@ -112,8 +114,8 @@ class AudioEngine(
                     AudioDeviceInfo.TYPE_USB_HEADSET ->
                         "External input recommended; output remains on the Bluetooth headphones."
                     AudioDeviceInfo.TYPE_BUILTIN_MIC ->
-                        "Pixel microphone: keep the phone exposed, not in a pocket."
-                    else -> "Audio input connected to the Pixel."
+                        "Built-in microphone: keep the phone exposed, not in a pocket."
+                    else -> "Audio input connected to the phone."
                 },
                 deviceId = device.id,
             )
@@ -529,11 +531,13 @@ class AudioEngine(
         frameSize: Int,
         voiceDetectorBackend: VoiceDetectorBackend,
     ): RealtimeAudioProcessor {
+        check(AndroidPlatformCapabilities.supports(backend)) {
+            "$backend is not available on Android ABI ${android.os.Build.SUPPORTED_ABIS.firstOrNull()}"
+        }
         val processor = when (backend) {
             ProcessorBackend.CLASSIC_DSP -> SpectralSpeechEnhancer(
                 sampleRate = sampleRate,
-                context = appContext,
-                voiceDetectorBackend = voiceDetectorBackend,
+                voiceDetector = NeuralVoiceDetector(appContext, sampleRate, voiceDetectorBackend),
             )
             ProcessorBackend.RNNOISE_NATIVE -> RnnoiseSpeechEnhancer()
             ProcessorBackend.ULUNAS_STREAM ->
@@ -635,6 +639,11 @@ class AudioEngine(
         sampleRate: Int,
         frameSize: Int,
     ): AudioRecord {
+        if (appContext.checkSelfPermission(Manifest.permission.RECORD_AUDIO) !=
+            PackageManager.PERMISSION_GRANTED
+        ) {
+            throw SecurityException("Microphone permission is not granted")
+        }
         val format = AudioFormat.Builder()
             .setEncoding(AudioFormat.ENCODING_PCM_16BIT)
             .setSampleRate(sampleRate)
@@ -816,7 +825,7 @@ class AudioEngine(
             return "Android did not honor the requested microphone (${requested.label})."
         }
         if (actualOutput == null || actualOutput.type !in supportedOutputTypes) {
-            return "Output not verified: make sure audio is not playing through the Pixel speaker."
+            return "Output not verified: make sure audio is not playing through the phone speaker."
         }
         return null
     }
@@ -844,7 +853,7 @@ class AudioEngine(
         AudioDeviceInfo.TYPE_USB_HEADSET -> "headset USB-C"
         AudioDeviceInfo.TYPE_WIRED_HEADSET -> "wired microphone"
         AudioDeviceInfo.TYPE_LINE_ANALOG -> "analog input"
-        AudioDeviceInfo.TYPE_BUILTIN_MIC -> "Pixel microphone"
+        AudioDeviceInfo.TYPE_BUILTIN_MIC -> "Built-in microphone"
         else -> "audio input"
     }
 
@@ -897,7 +906,7 @@ class AudioEngine(
     private fun describeDevice(device: AudioDeviceInfo?): String {
         if (device == null) return "system route"
         val type = when (device.type) {
-            AudioDeviceInfo.TYPE_BUILTIN_MIC -> "Pixel microphone"
+            AudioDeviceInfo.TYPE_BUILTIN_MIC -> "Built-in microphone"
             AudioDeviceInfo.TYPE_BLUETOOTH_A2DP -> "Bluetooth A2DP"
             AudioDeviceInfo.TYPE_BLUETOOTH_SCO -> "Bluetooth HFP"
             AudioDeviceInfo.TYPE_BLE_HEADSET -> "Bluetooth LE"
@@ -907,7 +916,7 @@ class AudioEngine(
             AudioDeviceInfo.TYPE_LINE_ANALOG -> "line-in"
             AudioDeviceInfo.TYPE_WIRED_HEADPHONES -> "wired headphones"
             AudioDeviceInfo.TYPE_WIRED_HEADSET -> "wired headset"
-            AudioDeviceInfo.TYPE_BUILTIN_SPEAKER -> "Pixel speaker"
+            AudioDeviceInfo.TYPE_BUILTIN_SPEAKER -> "Phone speaker"
             else -> "audio ${device.type}"
         }
         val name = runCatching { device.productName.toString().trim() }.getOrDefault("")
@@ -916,7 +925,7 @@ class AudioEngine(
 
     private fun describeSource(source: Int, sampleRate: Int): String = when (source) {
         MediaRecorder.AudioSource.UNPROCESSED -> "Raw input · ${sampleRate / 1_000} kHz"
-        MediaRecorder.AudioSource.MIC -> "Pixel system input · ${sampleRate / 1_000} kHz"
+        MediaRecorder.AudioSource.MIC -> "System microphone input · ${sampleRate / 1_000} kHz"
         MediaRecorder.AudioSource.VOICE_RECOGNITION ->
             "Voice recognition input · ${sampleRate / 1_000} kHz"
         MediaRecorder.AudioSource.VOICE_PERFORMANCE ->

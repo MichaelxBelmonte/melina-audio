@@ -1,0 +1,17 @@
+{
+  "name": "Melina",
+  "short_name": "Melina",
+  "description": "Private, on-device, real-time speech enhancement.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#080a09",
+  "theme_color": "#080a09",
+  "icons": [
+    {
+      "src": "assets/melina-app-icon.png",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

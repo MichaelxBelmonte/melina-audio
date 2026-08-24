@@ -1,0 +1,74 @@
+name: Cross-platform build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  desktop:
+    name: Desktop · ${{ matrix.target }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-26
+            target: macos-arm64
+          - os: macos-26-intel
+            target: macos-x64
+          - os: ubuntu-24.04
+            target: linux-x64
+          - os: ubuntu-24.04-arm
+            target: linux-arm64
+          - os: windows-2025
+            target: windows-x64
+          - os: windows-11-vs2026-arm
+            target: windows-arm64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: "1.97.1"
+      - name: Build DeepFilterNet native runtime
+        shell: bash
+        run: bash scripts/build_deepfilter_desktop.sh
+      - name: Test and package
+        shell: bash
+        run: ./gradlew -Pmelina.desktopOnly :audio-core:test :desktop:test :desktop:distZip :desktop:packageAppImage
+      - uses: actions/upload-artifact@v4
+        with:
+          name: melina-${{ matrix.target }}
+          path: |
+            desktop/build/distributions/*.zip
+            desktop/build/package/**
+          if-no-files-found: error
+
+  android:
+    name: Android · ARM64 and x86_64
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: android-actions/setup-android@v3
+      - name: Install Android SDK and NDK
+        run: sdkmanager "platforms;android-36" "build-tools;36.0.0" "ndk;28.2.13676358"
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Test and assemble
+        run: ./gradlew :audio-core:test :app:testDebugUnitTest :app:assembleDebug :app:lintDebug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: melina-android
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error

@@ -10,4 +10,4 @@ Include the affected version, Android version and device, reproduction steps, ex
 
 Security-sensitive areas include microphone permissions, session storage, file export, audio routing, native libraries, model loading, dependency provenance, and controls that could produce unexpectedly high output levels.
 
-Michelina Focus is an experimental research prototype and is not a medical device. It should not be relied on for emergency communication or used as a substitute for professionally fitted hearing technology.
+Melina is an experimental research prototype and is not a medical device. It should not be relied on for emergency communication or used as a substitute for professionally fitted hearing technology.

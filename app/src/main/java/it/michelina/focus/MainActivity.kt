@@ -17,6 +17,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.CompoundButton
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.SeekBar
@@ -35,6 +36,7 @@ import it.michelina.focus.audio.AudioEngine
 import it.michelina.focus.audio.AudioInputOption
 import it.michelina.focus.audio.AudioMetrics
 import it.michelina.focus.audio.AudioTransport
+import it.michelina.focus.audio.AndroidPlatformCapabilities
 import it.michelina.focus.audio.CaptureProfile
 import it.michelina.focus.audio.FittingProfile
 import it.michelina.focus.audio.MAX_PRESENCE_BOOST_DB
@@ -131,7 +133,7 @@ private enum class ListeningPreset(
     ),
     NATURAL(
         "NATURAL SOUND\nFULL BAND 48K",
-        "Preserves more high frequencies · natural, but very demanding on the Pixel.",
+        "Preserves more high frequencies · natural, but very demanding on the device.",
         ProcessorBackend.DPDFNET_HQ,
         CaptureProfile.RAW,
         VoiceDetectorBackend.SILERO,
@@ -319,7 +321,15 @@ class MainActivity : ComponentActivity() {
             orientation = LinearLayout.HORIZONTAL
             gravity = Gravity.CENTER_VERTICAL
         }
-        titles.addView(text("MICHELINA", 20f, TEXT_PRIMARY, Typeface.BOLD))
+        titles.addView(
+            ImageView(this).apply {
+                setImageResource(R.mipmap.melina_app_icon)
+                contentDescription = null
+                scaleType = ImageView.ScaleType.CENTER_CROP
+            },
+            LinearLayout.LayoutParams(dp(28), dp(28)).apply { marginEnd = dp(8) },
+        )
+        titles.addView(text("MELINA", 20f, TEXT_PRIMARY, Typeface.BOLD))
         titles.addView(monoText("  AUDIO PROCESSOR", 10f, TEXT_DIM, Typeface.BOLD))
         row.addView(titles, LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f))
         row.addView(
@@ -1154,7 +1164,10 @@ class MainActivity : ComponentActivity() {
             orientation = LinearLayout.VERTICAL
             background = roundedDrawable(SURFACE_RAISED, 3f, STROKE)
         }
-        ListeningPreset.entries.chunked(2).forEachIndexed { rowIndex, entries ->
+        ListeningPreset.entries
+            .filter { AndroidPlatformCapabilities.supports(it.backend) }
+            .chunked(2)
+            .forEachIndexed { rowIndex, entries ->
             val row = LinearLayout(this@MainActivity).apply {
                 orientation = LinearLayout.HORIZONTAL
             }
@@ -1327,7 +1340,7 @@ class MainActivity : ComponentActivity() {
             ProcessorBackend.DPDFNET8_SPEECH to "MAX · DPDF8",
             ProcessorBackend.DPDFNET_HQ to "NATURAL 48K · DPDF2",
             ProcessorBackend.CLASSIC_DSP to "LIGHT · CLASSIC",
-        )
+        ).filter { AndroidPlatformCapabilities.supports(it.first) }
         labels.chunked(2).forEachIndexed { rowIndex, entries ->
             val row = LinearLayout(this@MainActivity).apply {
                 orientation = LinearLayout.HORIZONTAL
@@ -1754,8 +1767,9 @@ class MainActivity : ComponentActivity() {
 
     private fun renderMetrics(metrics: AudioMetrics) {
         waveformView.update(metrics)
-        if (metrics.error != null) {
-            renderError(metrics.error)
+        val error = metrics.error
+        if (error != null) {
+            renderError(error)
             return
         }
 

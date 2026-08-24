@@ -1,6 +1,6 @@
-# Contributing to Michelina Focus
+# Contributing to Melina
 
-Thank you for helping improve Michelina Focus. The project welcomes focused bug fixes, tests, documentation improvements, performance measurements, and carefully evaluated audio-processing changes.
+Thank you for helping improve Melina. The project welcomes focused bug fixes, tests, documentation improvements, performance measurements, and carefully evaluated audio-processing changes.
 
 ## Before you start
 
