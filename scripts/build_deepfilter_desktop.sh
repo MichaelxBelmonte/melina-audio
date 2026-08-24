@@ -95,7 +95,10 @@ esac
 case "$kernel" in
     darwin*) platform="osx-$architecture"; source_library="$target_root/release/libdf.dylib"; library_name="libdf.dylib" ;;
     linux*) platform="linux-$architecture"; source_library="$target_root/release/libdf.so"; library_name="libdf.so" ;;
-    mingw*|msys*|cygwin*) platform="win-$architecture"; source_library="$target_root/release/df.dll"; library_name="df.dll" ;;
+    mingw*|msys*|cygwin*)
+        [[ "$architecture" == "aarch64" ]] && architecture="arm64"
+        platform="win-$architecture"; source_library="$target_root/release/df.dll"; library_name="df.dll"
+        ;;
     *) echo "Sistema desktop non supportato: $kernel" >&2; exit 1 ;;
 esac
 

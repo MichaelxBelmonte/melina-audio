@@ -113,6 +113,24 @@ tasks.named<org.gradle.language.jvm.tasks.ProcessResources>("processResources") 
     }
 }
 
+tasks.register("verifyDeepFilterPackaging") {
+    group = "verification"
+    description = "Verifies that the platform libDF runtime is present in the desktop JAR."
+    dependsOn("jar")
+    doLast {
+        check(deepFilterLibraryFile.isFile) {
+            "DeepFilterNet runtime not found: ${deepFilterLibraryFile.absolutePath}"
+        }
+        val expectedResource = "native/$desktopPlatform/$deepFilterLibraryName"
+        val jarFile = tasks.named<org.gradle.jvm.tasks.Jar>("jar").get().archiveFile.get().asFile
+        java.util.zip.ZipFile(jarFile).use { archive ->
+            check(archive.getEntry(expectedResource) != null) {
+                "DeepFilterNet runtime not packaged in ${jarFile.name}: $expectedResource"
+            }
+        }
+    }
+}
+
 tasks.register<Exec>("packageAppImage") {
     group = "distribution"
     description = "Builds a native desktop app image with a bundled Java runtime."

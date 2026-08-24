@@ -51,7 +51,7 @@ jobs:
         run: bash scripts/build_deepfilter_desktop.sh
       - name: Test and package
         shell: bash
-        run: ./gradlew -Pmelina.desktopOnly :audio-core:test :desktop:test :desktop:distZip :desktop:packageAppImage
+        run: ./gradlew -Pmelina.desktopOnly :audio-core:test :desktop:test :desktop:verifyDeepFilterPackaging :desktop:distZip :desktop:packageAppImage
       - uses: actions/upload-artifact@v7
         with:
           name: melina-${{ matrix.target }}
