@@ -32,7 +32,7 @@ jobs:
             deepfilter: true
           - os: windows-11-vs2026-arm
             target: windows-arm64
-            deepfilter: false
+            deepfilter: true
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v7

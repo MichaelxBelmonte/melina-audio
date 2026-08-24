@@ -43,7 +43,7 @@ Microphone 48 kHz
   → headphones
 ```
 
-Only the selected enhancement backend is loaded into memory. macOS, Linux, Windows x64, and Android ARM64 expose all nine processors. Windows ARM64 exposes eight while upstream tract/libDF lacks a compatible Windows ARM64 assembly build; Android x86_64 exposes the seven backends whose Android libraries support that ABI. RNNoise uses native C, GTCRN/DPDFNet use sherpa-onnx, UL-UNAS uses ONNX Runtime, and DeepFilterNet3 uses the official libDF/Tract implementation through JNI. The platform-neutral STFT, resampling, alignment, fitting, dynamics, and telemetry live in `audio-core`.
+Only the selected enhancement backend is loaded into memory. Every desktop target and Android ARM64 expose all nine processors; Android x86_64 exposes the seven backends whose Android libraries support that ABI. RNNoise uses native C, GTCRN/DPDFNet use sherpa-onnx, UL-UNAS uses ONNX Runtime, and DeepFilterNet3 uses the official libDF/Tract implementation through JNI. The platform-neutral STFT, resampling, alignment, fitting, dynamics, and telemetry live in `audio-core`.
 
 ## Backends
 
@@ -103,8 +103,8 @@ bash scripts/build_deepfilter_desktop.sh
 ```
 
 If Rust is unavailable, the Gradle command still creates a functional eight-backend distribution
-without DeepFilterNet3. Official CI artifacts include libDF on every desktop target except Windows
-ARM64, where upstream tract 0.21 cannot currently assemble its ARM64 kernels for the MSVC ABI.
+without DeepFilterNet3. Official CI artifacts include libDF on every desktop target. The build uses
+a documented, source-vendored tract-linalg patch for optimized Windows ARM64 assembly.
 
 Launch the graphical application:
 

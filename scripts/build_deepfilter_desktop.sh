@@ -9,6 +9,7 @@ build_root="${MELINA_DEEPFILTER_BUILD_DIR:-${MICHELINA_DEEPFILTER_BUILD_DIR:-$pr
 archive="$build_root/DeepFilterNet-$commit.tar.gz"
 source_root="$build_root/source-$commit"
 target_root="$build_root/target"
+tract_vendor="$project_root/desktop/deepfilter/vendor/tract-linalg-0.21.4"
 
 command -v cargo >/dev/null || {
     echo "cargo non trovato: installa Rust 1.97.1 con rustup." >&2
@@ -46,6 +47,30 @@ if [[ ! -f "$source_root/libDF/Cargo.toml" ]]; then
     tar -xzf "$archive" -C "$source_root" --strip-components=1
 fi
 
+kernel="$(uname -s | tr '[:upper:]' '[:lower:]')"
+machine="${RUNNER_ARCH:-$(uname -m)}"
+machine="$(printf '%s' "$machine" | tr '[:upper:]' '[:lower:]')"
+
+# tract-linalg 0.21.4 sends generated ARM64 GNU assembly to cl.exe on a native Windows
+# ARM64 host. Use Melina's checksum-pinned source patch and LLVM's GNU-compatible driver
+# for that target; other platforms retain the upstream compiler selection and code path.
+patched_tract="$source_root/vendor/tract-linalg-0.21.4"
+mkdir -p "$patched_tract"
+cp -R "$tract_vendor/." "$patched_tract/"
+if ! grep -Fq 'tract-linalg = { path = "vendor/tract-linalg-0.21.4" }' "$source_root/Cargo.toml"; then
+    printf '\n[patch.crates-io]\ntract-linalg = { path = "vendor/tract-linalg-0.21.4" }\n' \
+        >> "$source_root/Cargo.toml"
+fi
+
+if [[ "$kernel" == mingw* || "$kernel" == msys* || "$kernel" == cygwin* ]] &&
+    [[ "$machine" == arm64 || "$machine" == aarch64 ]]; then
+    command -v clang >/dev/null || {
+        echo "clang non trovato: necessario per DeepFilterNet su Windows ARM64." >&2
+        exit 1
+    }
+    export CC_aarch64_pc_windows_msvc="${CC_aarch64_pc_windows_msvc:-clang}"
+fi
+
 # The official C API enables an embedded default model. Melina passes the same official model
 # as a resource, so remove only that redundant feature, matching the Android libDF build.
 perl -0pi -e \
@@ -61,9 +86,6 @@ CARGO_TARGET_DIR="$target_root" cargo build \
     --no-default-features \
     --features capi
 
-kernel="$(uname -s | tr '[:upper:]' '[:lower:]')"
-machine="${RUNNER_ARCH:-$(uname -m)}"
-machine="$(printf '%s' "$machine" | tr '[:upper:]' '[:lower:]')"
 case "$machine" in
     arm64|aarch64) architecture="aarch64" ;;
     x64|x86_64|amd64) architecture="x64" ;;

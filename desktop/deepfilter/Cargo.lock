@@ -4713,8 +4713,6 @@ dependencies = [
 [[package]]
 name = "tract-linalg"
 version = "0.21.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b58f074c94c74ea736a75b7ac6f696add05c62fc4745d1c420cf7d4d42eb7b2b"
 dependencies = [
  "cc",
  "derive-new",

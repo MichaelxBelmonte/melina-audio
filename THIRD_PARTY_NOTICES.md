@@ -29,6 +29,7 @@ Melina v0.13 bundles the following third-party runtime and model files.
 - Android arm64 library: `lib/arm64-v8a/libdf.so`
 - Library SHA-256: `5adc94ef81e551be444676ee962f56e219db7ba70812078584d3937e447624a8`
 - Desktop libraries: built per target from the same source commit by `scripts/build_deepfilter_desktop.sh`; the resolved Rust dependency graph is pinned in `desktop/deepfilter/Cargo.lock`.
+- Windows ARM64 build dependency: the official `tract-linalg 0.21.4` crate is vendored from crates.io with archive SHA-256 `b58f074c94c74ea736a75b7ac6f696add05c62fc4745d1c420cf7d4d42eb7b2b`. Melina changes only its assembler selection for native Windows ARM64; see `desktop/deepfilter/vendor/tract-linalg-0.21.4/MELINA_PATCH.md`.
 - License: MIT OR Apache License 2.0
 - License copies in APK: `assets/licenses/deepfilternet-MIT.txt`, `assets/licenses/deepfilternet-APACHE-2.0.txt`
 - Android build details: `app/src/main/jniLibs/DEEPFILTER_BUILD_NOTICE.md`
