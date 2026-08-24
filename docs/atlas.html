@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#080a09">
+    <meta name="description" content="Un atlante 3D interattivo di aziende, centri di ricerca, modelli, architetture e prove nel realtime hearing enhancement.">
+    <title>Hearing Intelligence Atlas · Melina</title>
+    <link rel="icon" href="assets/melina-mark.png">
+    <link rel="stylesheet" href="atlas.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#atlas-main">Vai al grafo</a>
+
+    <header class="atlas-header">
+      <a class="brand" href="./" aria-label="Melina home">
+        <img src="assets/melina-mark.png" alt="" width="28" height="28">
+        <span>Melina</span>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="brand-atlas">Intelligence Atlas</span>
+      </a>
+
+      <div class="header-stats" aria-label="Statistiche del grafo">
+        <span><strong id="node-count">—</strong> entità</span>
+        <span><strong id="edge-count">—</strong> legami</span>
+        <span><strong id="integrated-count">—</strong> in Melina</span>
+      </div>
+
+      <div class="header-actions">
+        <button class="icon-button" id="help-button" type="button" aria-label="Apri guida e metodologia" title="Guida e metodologia">
+          <span aria-hidden="true">?</span>
+        </button>
+        <a class="repo-link" href="https://github.com/michaelxbelmonte/melina-audio" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+
+    <main id="atlas-main" class="atlas-shell">
+      <aside class="control-rail" aria-label="Controlli dell'atlante">
+        <div class="rail-section search-section">
+          <label class="search-box" for="search-input">
+            <span class="search-icon" aria-hidden="true"></span>
+            <input id="search-input" type="search" autocomplete="off" placeholder="Cerca modello, azienda, architettura…">
+            <kbd>⌘ K</kbd>
+          </label>
+          <div id="search-results" class="search-results" role="listbox" aria-label="Risultati di ricerca" hidden></div>
+        </div>
+
+        <section class="rail-section" aria-labelledby="view-title">
+          <div class="section-heading">
+            <h2 id="view-title">Vista</h2>
+            <button class="text-button" id="reset-view" type="button">Reset</button>
+          </div>
+          <div class="segmented layout-switch" role="group" aria-label="Disposizione del grafo">
+            <button type="button" class="is-active" data-layout="semantic">Campi</button>
+            <button type="button" data-layout="timeline">Tempo</button>
+            <button type="button" data-layout="openness">Accesso</button>
+          </div>
+        </section>
+
+        <section class="rail-section" aria-labelledby="size-title">
+          <h2 id="size-title">Dimensione nodo</h2>
+          <label class="select-wrap">
+            <span class="sr-only">Metrica dimensione nodo</span>
+            <select id="size-metric">
+              <option value="ecosystemValue">Valore ecosistemico</option>
+              <option value="scaleScore">Scala organizzazione</option>
+              <option value="stars">GitHub stars</option>
+              <option value="downloads">HF downloads</option>
+              <option value="validation">Validazione</option>
+              <option value="openness">Apertura</option>
+            </select>
+          </label>
+          <p class="metric-note" id="metric-note">Punteggio editoriale: influenza, evidenza, utilità e deployability.</p>
+        </section>
+
+        <section class="rail-section" aria-labelledby="field-title">
+          <div class="section-heading">
+            <h2 id="field-title">Campi semantici</h2>
+            <button class="text-button" id="toggle-fields" type="button">Solo attivi</button>
+          </div>
+          <div id="field-filters" class="field-filters"></div>
+        </section>
+
+        <section class="rail-section" aria-labelledby="type-title">
+          <h2 id="type-title">Tipi</h2>
+          <div id="type-filters" class="type-filters"></div>
+        </section>
+
+        <section class="rail-section timeline-section" aria-labelledby="year-title">
+          <div class="section-heading">
+            <h2 id="year-title">Anno massimo</h2>
+            <output id="year-output" for="year-range">2026</output>
+          </div>
+          <input id="year-range" type="range" min="2017" max="2026" value="2026" step="1">
+          <div class="range-labels" aria-hidden="true"><span>2017</span><span>2026</span></div>
+        </section>
+
+        <div class="rail-footer">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span id="data-freshness">Dati curati + metriche live</span>
+        </div>
+      </aside>
+
+      <section class="graph-stage" aria-label="Grafo tridimensionale dell'ecosistema">
+        <canvas id="graph-canvas" tabindex="0" aria-label="Grafo 3D interattivo. Trascina per ruotare, usa la rotella per zoomare e seleziona un nodo per i dettagli."></canvas>
+
+        <div class="stage-topbar">
+          <div class="context-pill" id="context-pill">
+            <span class="pulse" aria-hidden="true"></span>
+            <span id="visible-summary">Caricamento atlante…</span>
+          </div>
+          <button id="fit-view" class="stage-button" type="button" title="Centra il grafo" aria-label="Centra il grafo">
+            <span class="fit-icon" aria-hidden="true"></span>
+            Centra
+          </button>
+          <button id="auto-rotate" class="stage-button is-active" type="button" aria-pressed="true">
+            <span class="orbit-icon" aria-hidden="true"></span>
+            Orbita
+          </button>
+        </div>
+
+        <div id="semantic-labels" class="semantic-labels" aria-hidden="true"></div>
+
+        <div class="legend" aria-label="Legenda">
+          <span><i class="legend-shape circle"></i> Modello / progetto</span>
+          <span><i class="legend-shape diamond"></i> Azienda / hub</span>
+          <span><i class="legend-shape square"></i> Dati / runtime</span>
+          <span><i class="legend-line"></i> Relazione</span>
+        </div>
+
+        <div class="gesture-hint" id="gesture-hint">
+          <span aria-hidden="true">↔</span> Trascina per esplorare · scroll per zoom
+        </div>
+
+        <div id="loading-state" class="loading-state" role="status">
+          <div class="loader-mark" aria-hidden="true"><i></i><i></i><i></i></div>
+          <p>Costruzione dello spazio semantico</p>
+        </div>
+
+        <div id="error-state" class="error-state" hidden>
+          <p>Non riesco a caricare il dataset dell'atlante.</p>
+          <button type="button" id="retry-button">Riprova</button>
+        </div>
+      </section>
+
+      <aside class="detail-panel" id="detail-panel" aria-label="Dettagli dell'entità">
+        <div id="detail-empty" class="detail-empty">
+          <div class="empty-orbit" aria-hidden="true"><span></span></div>
+          <p class="eyebrow">Intelligence layer</p>
+          <h2>Scegli un nodo</h2>
+          <p>Apri un modello, un centro di ricerca o un'architettura per vedere disponibilità, latenza, prove e connessioni.</p>
+          <div class="shortcut-list">
+            <span><kbd>drag</kbd> ruota</span>
+            <span><kbd>scroll</kbd> zoom</span>
+            <span><kbd>esc</kbd> deseleziona</span>
+          </div>
+        </div>
+
+        <article id="detail-content" class="detail-content" hidden>
+          <button class="panel-close" id="panel-close" type="button" aria-label="Chiudi dettagli">×</button>
+          <div class="detail-head">
+            <div class="node-glyph" id="detail-glyph" aria-hidden="true"></div>
+            <div>
+              <p class="eyebrow" id="detail-type"></p>
+              <h2 id="detail-title"></h2>
+            </div>
+          </div>
+
+          <div class="status-row" id="detail-status"></div>
+          <p class="detail-description" id="detail-description"></p>
+
+          <div class="score-card">
+            <div>
+              <span class="score-label">Valore ecosistemico</span>
+              <strong id="detail-score">—</strong><small>/100</small>
+            </div>
+            <div class="score-bars" id="detail-score-bars"></div>
+          </div>
+
+          <dl class="metric-grid" id="detail-metrics"></dl>
+
+          <section class="detail-section" id="architecture-section">
+            <h3>Architettura</h3>
+            <div class="tag-cloud" id="detail-architecture"></div>
+          </section>
+
+          <section class="detail-section">
+            <div class="section-heading">
+              <h3>Validazione</h3>
+              <span class="validation-score" id="validation-score"></span>
+            </div>
+            <div class="validation-meter"><span id="validation-meter-fill"></span></div>
+            <strong class="validation-level" id="validation-level"></strong>
+            <p id="validation-summary"></p>
+          </section>
+
+          <section class="detail-section">
+            <h3>Connessioni <span id="relation-count"></span></h3>
+            <div class="relation-list" id="detail-relations"></div>
+          </section>
+
+          <div class="detail-links" id="detail-links"></div>
+        </article>
+      </aside>
+    </main>
+
+    <dialog id="methodology-dialog" class="methodology-dialog">
+      <form method="dialog">
+        <button class="dialog-close" value="close" aria-label="Chiudi">×</button>
+        <p class="eyebrow">Come leggere l'atlante</p>
+        <h2>Una mappa decisionale, non una classifica assoluta.</h2>
+        <p id="methodology-copy"></p>
+        <div class="method-grid">
+          <div><strong>Valore ecosistemico</strong><p>0–100 editoriale: influenza, rilevanza per l'udito, accessibilità, evidenza e possibilità di deployment.</p></div>
+          <div><strong>Scala</strong><p>0–100 confronta l'impatto organizzativo. Non trasforma un laboratorio in una capitalizzazione di mercato.</p></div>
+          <div><strong>Validazione</strong><p>Separa benchmark, test reali, studi umani, prove hearing-specific e affermazioni del produttore.</p></div>
+          <div><strong>Metriche live</strong><p>Stars e download sono segnali di adozione, non di qualità. La data di aggiornamento resta visibile.</p></div>
+        </div>
+        <p class="method-footnote">Le latenze non sono sempre confrontabili: alcune sono algoritmiche, altre misurate end-to-end. Apri il nodo per vedere il contesto.</p>
+        <button class="primary-button" value="close">Esplora il grafo</button>
+      </form>
+    </dialog>
+
+    <noscript>
+      <div class="noscript-note">Questo atlante richiede JavaScript per proiettare e navigare il grafo 3D.</div>
+    </noscript>
+    <script src="atlas.js" defer></script>
+  </body>
+</html>

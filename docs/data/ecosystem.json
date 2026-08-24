@@ -1,0 +1,3835 @@
+{
+  "meta": {
+    "title": "Hearing Intelligence Atlas",
+    "subtitle": "Realtime audio, hearing augmentation and assistive listening",
+    "updatedAt": "2026-08-24T16:39:20.379Z",
+    "methodology": "Ecosystem value is an editorial 0–100 score combining technical relevance, deployability, evidence, openness and influence. It is not a market valuation. Validation distinguishes independent human or clinical evidence from benchmark-only and manufacturer-reported results. GitHub stars and Hugging Face downloads are refreshed from their public APIs when the site is built.",
+    "metricSources": [
+      "GitHub REST API",
+      "Hugging Face API",
+      "official papers",
+      "official repositories",
+      "manufacturer technical pages"
+    ],
+    "liveMetrics": {
+      "updatedAt": "2026-08-24T16:39:20.379Z",
+      "github": {
+        "requested": 28,
+        "updated": 28
+      },
+      "huggingFace": {
+        "requested": 3,
+        "updated": 3
+      },
+      "failures": []
+    }
+  },
+  "fields": [
+    {
+      "id": "enhancement",
+      "label": "Speech enhancement",
+      "color": "#c8ff42",
+      "description": "Noise and reverberation reduction for clearer speech."
+    },
+    {
+      "id": "target",
+      "label": "Target speaker",
+      "color": "#6fffd7",
+      "description": "Select, enroll or track the voice the listener wants."
+    },
+    {
+      "id": "spatial",
+      "label": "Spatial & binaural",
+      "color": "#58a6ff",
+      "description": "Beamforming, binaural cues and spatial awareness."
+    },
+    {
+      "id": "audiology",
+      "label": "Hearing science",
+      "color": "#d29bff",
+      "description": "Hearing-loss models, fitting and intelligibility."
+    },
+    {
+      "id": "evaluation",
+      "label": "Evidence & datasets",
+      "color": "#ffca66",
+      "description": "Challenges, clinical tests, human studies and corpora."
+    },
+    {
+      "id": "deployment",
+      "label": "Edge deployment",
+      "color": "#ff7f66",
+      "description": "Streaming runtimes, efficient networks and device constraints."
+    },
+    {
+      "id": "commercial",
+      "label": "Commercial systems",
+      "color": "#ff6fae",
+      "description": "Products and proprietary hearing-aid platforms."
+    }
+  ],
+  "types": [
+    {
+      "id": "project",
+      "label": "Project"
+    },
+    {
+      "id": "model",
+      "label": "Model"
+    },
+    {
+      "id": "company",
+      "label": "Company"
+    },
+    {
+      "id": "research",
+      "label": "Research hub"
+    },
+    {
+      "id": "product",
+      "label": "Product / closed system"
+    },
+    {
+      "id": "dataset",
+      "label": "Dataset / challenge"
+    },
+    {
+      "id": "architecture",
+      "label": "Architecture"
+    },
+    {
+      "id": "runtime",
+      "label": "Runtime"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "melina",
+      "label": "Melina",
+      "type": "project",
+      "primaryField": "deployment",
+      "fields": [
+        "enhancement",
+        "deployment",
+        "audiology"
+      ],
+      "year": 2026,
+      "stage": "integrated",
+      "openness": 100,
+      "ecosystemValue": 86,
+      "scaleScore": 48,
+      "description": "Local-first realtime hearing enhancement for Android and desktop. One audio core, nine switchable backends and measurable session telemetry.",
+      "architecture": [
+        "streaming audio graph",
+        "backend abstraction",
+        "ONNX Runtime",
+        "sherpa-onnx"
+      ],
+      "metrics": {
+        "stars": 0,
+        "downloads": null,
+        "parameters": null,
+        "latencyMs": null,
+        "sampleRate": "16/48 kHz",
+        "forks": 0,
+        "openIssues": 0,
+        "repositoryUpdatedAt": "2026-08-24T13:28:53Z"
+      },
+      "validation": {
+        "score": 68,
+        "level": "device benchmark",
+        "summary": "Real-device Pixel and desktop benchmarks; clinical benefit is not yet established.",
+        "evidence": "Repository benchmarks and session telemetry"
+      },
+      "license": "Repository license",
+      "status": "open",
+      "inMelina": true,
+      "githubRepo": "michaelxbelmonte/melina-audio",
+      "links": [
+        {
+          "label": "Project site",
+          "url": "https://michaelxbelmonte.github.io/melina-audio/"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "google-research",
+      "label": "Google Research",
+      "type": "research",
+      "primaryField": "audiology",
+      "fields": [
+        "audiology",
+        "enhancement",
+        "spatial",
+        "deployment"
+      ],
+      "year": 2018,
+      "stage": "research",
+      "openness": 64,
+      "ecosystemValue": 98,
+      "scaleScore": 100,
+      "description": "A leading source of ultra-low-latency hearing architectures: Deep FIR, Googlears, differentiable auditory-loss compensation and source separation.",
+      "architecture": [
+        "minimum-phase FIR",
+        "neural beamforming",
+        "auditory models"
+      ],
+      "validation": {
+        "score": 76,
+        "level": "peer reviewed",
+        "summary": "Strong research evidence; availability varies by project."
+      },
+      "status": "mixed",
+      "links": [
+        {
+          "label": "Publications",
+          "url": "https://research.google/pubs/"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "afhi",
+      "label": "Australian Future Hearing Initiative",
+      "type": "research",
+      "primaryField": "audiology",
+      "fields": [
+        "audiology",
+        "enhancement",
+        "evaluation"
+      ],
+      "year": 2024,
+      "stage": "research",
+      "openness": 70,
+      "ecosystemValue": 91,
+      "scaleScore": 70,
+      "description": "Google, Macquarie University and National Acoustic Laboratories collaboration on personalized hearing and differentiable auditory-loss compensation.",
+      "validation": {
+        "score": 62,
+        "level": "proof of concept",
+        "summary": "DAL is promising, but hardware and clinical validation remain future work."
+      },
+      "status": "mixed",
+      "githubRepo": "Australian-Future-Hearing-Initiative/jax-haspi-hasqi",
+      "links": [
+        {
+          "label": "Initiative",
+          "url": "https://research.google/teams/brain/australian-future-hearing-initiative/"
+        }
+      ],
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "openIssues": 0,
+        "repositoryUpdatedAt": "2026-08-22T01:02:36Z"
+      },
+      "repositoryArchived": false
+    },
+    {
+      "id": "uw-mil",
+      "label": "UW Mobile Intelligence Lab",
+      "type": "research",
+      "primaryField": "target",
+      "fields": [
+        "target",
+        "spatial",
+        "deployment"
+      ],
+      "year": 2022,
+      "stage": "research",
+      "openness": 82,
+      "ecosystemValue": 97,
+      "scaleScore": 78,
+      "description": "Shyam Gollakota's lab builds deployable semantic, binaural and enrolled-speaker listening systems, including ClearBuds and Look Once to Hear.",
+      "validation": {
+        "score": 87,
+        "level": "human study",
+        "summary": "Multiple in-the-wild prototypes and controlled human studies."
+      },
+      "status": "open",
+      "links": [
+        {
+          "label": "Lab",
+          "url": "https://netlab.cs.washington.edu/"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "hearvana",
+      "label": "Hearvana AI",
+      "type": "company",
+      "primaryField": "target",
+      "fields": [
+        "target",
+        "spatial",
+        "deployment",
+        "commercial"
+      ],
+      "year": 2025,
+      "stage": "early company",
+      "openness": 20,
+      "ecosystemValue": 88,
+      "scaleScore": 50,
+      "description": "Acoustic-intelligence startup co-founded by Shyam Gollakota to transfer UW work on programmable hearing, target speech and embedded audio AI into products.",
+      "architecture": [
+        "realtime acoustic intelligence",
+        "embedded speech AI",
+        "research-to-product transfer"
+      ],
+      "validation": {
+        "score": 55,
+        "level": "research lineage",
+        "summary": "The founding research portfolio is unusually strong; company product architecture and independent commercial validation are not public."
+      },
+      "status": "private / early",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "Hearvana AI",
+          "url": "https://www.hearvana.ai/"
+        },
+        {
+          "label": "Founder profile",
+          "url": "https://homes.cs.washington.edu/~gshyam/"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "clarity",
+      "label": "Clarity Project",
+      "type": "research",
+      "primaryField": "evaluation",
+      "fields": [
+        "evaluation",
+        "audiology",
+        "enhancement"
+      ],
+      "year": 2020,
+      "stage": "active challenge",
+      "openness": 95,
+      "ecosystemValue": 96,
+      "scaleScore": 80,
+      "description": "The most directly relevant open evaluation ecosystem for hearing-aid speech enhancement, listener simulation and intelligibility prediction.",
+      "validation": {
+        "score": 94,
+        "level": "hearing-specific",
+        "summary": "Listener-aware challenge design and public evaluation tooling."
+      },
+      "status": "open",
+      "githubRepo": "claritychallenge/clarity",
+      "links": [
+        {
+          "label": "Challenge",
+          "url": "https://claritychallenge.org/"
+        }
+      ],
+      "metrics": {
+        "stars": 191,
+        "forks": 68,
+        "openIssues": 28,
+        "repositoryUpdatedAt": "2026-08-17T22:44:08Z"
+      },
+      "repositoryArchived": false
+    },
+    {
+      "id": "oldenburg",
+      "label": "Oldenburg · HörTech",
+      "type": "research",
+      "primaryField": "audiology",
+      "fields": [
+        "audiology",
+        "deployment",
+        "spatial"
+      ],
+      "year": 2009,
+      "stage": "active research",
+      "openness": 92,
+      "ecosystemValue": 94,
+      "scaleScore": 76,
+      "description": "Long-running open hearing-aid research hub behind openMHA, reference algorithms and low-latency binaural processing.",
+      "validation": {
+        "score": 88,
+        "level": "research platform",
+        "summary": "Hearing-science platform used in academic and translational studies."
+      },
+      "status": "open",
+      "links": [
+        {
+          "label": "openMHA",
+          "url": "https://www.openmha.org/"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "microsoft-research",
+      "label": "Microsoft Research",
+      "type": "research",
+      "primaryField": "deployment",
+      "fields": [
+        "enhancement",
+        "deployment"
+      ],
+      "year": 2024,
+      "stage": "research",
+      "openness": 45,
+      "ecosystemValue": 88,
+      "scaleScore": 100,
+      "description": "Systematic work showing that carefully trained 3 ms CRUSE-class enhancement can approach 20 ms systems.",
+      "validation": {
+        "score": 73,
+        "level": "peer reviewed",
+        "summary": "Strong controlled study; the ultra-low-latency weights are not public."
+      },
+      "status": "paper only",
+      "links": [
+        {
+          "label": "Ultra-low-latency study",
+          "url": "https://www.microsoft.com/en-us/research/publication/ultra-low-latency-speech-enhancement-a-comprehensive-study/"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "columbia-naplab",
+      "label": "Columbia NAPLab",
+      "type": "research",
+      "primaryField": "target",
+      "fields": [
+        "target",
+        "audiology",
+        "evaluation"
+      ],
+      "year": 2026,
+      "stage": "clinical research",
+      "openness": 82,
+      "ecosystemValue": 93,
+      "scaleScore": 74,
+      "description": "Nima Mesgarani's lab develops neuro-steered speaker extraction and real-time brain-controlled hearing.",
+      "validation": {
+        "score": 92,
+        "level": "human clinical research",
+        "summary": "Real-time study with invasive iEEG; compelling evidence but not a consumer sensing path."
+      },
+      "status": "open code",
+      "githubRepo": "naplab/Real-Time-Brain-Controlled-Hearing",
+      "links": [
+        {
+          "label": "Nature study code",
+          "url": "https://github.com/naplab/Real-Time-Brain-Controlled-Hearing"
+        }
+      ],
+      "metrics": {
+        "stars": 8,
+        "forks": 1,
+        "openIssues": 0,
+        "repositoryUpdatedAt": "2026-05-17T02:13:55Z"
+      },
+      "repositoryArchived": false
+    },
+    {
+      "id": "xiph",
+      "label": "Xiph.Org · Valin",
+      "type": "research",
+      "primaryField": "enhancement",
+      "fields": [
+        "enhancement",
+        "deployment"
+      ],
+      "year": 2017,
+      "stage": "production open source",
+      "openness": 100,
+      "ecosystemValue": 92,
+      "scaleScore": 68,
+      "description": "Origin of RNNoise and PercepNet: compact recurrent enhancement designs with an exceptional deployment-to-compute ratio.",
+      "validation": {
+        "score": 86,
+        "level": "production adoption",
+        "summary": "Widely deployed open implementations and peer-reviewed perceptual research."
+      },
+      "status": "open",
+      "githubRepo": "xiph/rnnoise",
+      "links": [
+        {
+          "label": "RNNoise",
+          "url": "https://github.com/xiph/rnnoise"
+        }
+      ],
+      "metrics": {
+        "stars": 5798,
+        "forks": 1070,
+        "openIssues": 205,
+        "repositoryUpdatedAt": "2025-02-22T23:58:31Z"
+      },
+      "repositoryArchived": false
+    },
+    {
+      "id": "ceva",
+      "label": "CEVA",
+      "type": "company",
+      "primaryField": "deployment",
+      "fields": [
+        "deployment",
+        "enhancement"
+      ],
+      "year": 2023,
+      "stage": "IP platform",
+      "openness": 72,
+      "ecosystemValue": 80,
+      "scaleScore": 72,
+      "description": "Edge-AI semiconductor IP company that open-sourced the DPDFNet family for highly efficient denoising.",
+      "validation": {
+        "score": 68,
+        "level": "benchmark",
+        "summary": "Open weights and implementation; hearing-specific benefit is unvalidated."
+      },
+      "status": "mixed",
+      "githubRepo": "ceva-ip/DPDFNet",
+      "links": [
+        {
+          "label": "DPDFNet",
+          "url": "https://github.com/ceva-ip/DPDFNet"
+        }
+      ],
+      "metrics": {
+        "stars": 135,
+        "forks": 16,
+        "openIssues": 2,
+        "repositoryUpdatedAt": "2026-07-22T07:48:24Z"
+      },
+      "repositoryArchived": false
+    },
+    {
+      "id": "alibaba-iic",
+      "label": "Alibaba IIC Speech Lab",
+      "type": "research",
+      "primaryField": "enhancement",
+      "fields": [
+        "enhancement",
+        "target",
+        "evaluation"
+      ],
+      "year": 2024,
+      "stage": "open platform",
+      "openness": 90,
+      "ecosystemValue": 84,
+      "scaleScore": 94,
+      "description": "Maintains ClearerVoice Studio, pretrained enhancement, separation, super-resolution and target-speaker extraction models.",
+      "validation": {
+        "score": 72,
+        "level": "benchmarks",
+        "summary": "Broad public model coverage and reproducible objective metrics; not optimized for hearing-aid latency."
+      },
+      "status": "open",
+      "githubRepo": "modelscope/ClearerVoice-Studio",
+      "links": [
+        {
+          "label": "ClearerVoice Studio",
+          "url": "https://github.com/modelscope/ClearerVoice-Studio"
+        }
+      ],
+      "metrics": {
+        "stars": 4440,
+        "forks": 364,
+        "openIssues": 90,
+        "repositoryUpdatedAt": "2025-08-14T08:26:31Z"
+      },
+      "repositoryArchived": false
+    },
+    {
+      "id": "sonova",
+      "label": "Sonova · Phonak",
+      "type": "company",
+      "primaryField": "commercial",
+      "fields": [
+        "commercial",
+        "enhancement",
+        "audiology"
+      ],
+      "year": 1947,
+      "stage": "market leader",
+      "openness": 18,
+      "ecosystemValue": 99,
+      "scaleScore": 100,
+      "description": "Global hearing-care group. Phonak commercialized dedicated deep speech processing and acquired Audatic's research team.",
+      "validation": {
+        "score": 88,
+        "level": "manufacturer + studies",
+        "summary": "Large commercial deployment; technical details and model weights remain proprietary."
+      },
+      "status": "closed",
+      "links": [
+        {
+          "label": "Sonova",
+          "url": "https://www.sonova.com/"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "wsa",
+      "label": "WS Audiology · Signia · Widex",
+      "type": "company",
+      "primaryField": "commercial",
+      "fields": [
+        "commercial",
+        "audiology",
+        "spatial"
+      ],
+      "year": 2019,
+      "stage": "market leader",
+      "openness": 16,
+      "ecosystemValue": 96,
+      "scaleScore": 96,
+      "description": "Global hearing-aid group combining Signia's conversation-centric processing with Widex sound-quality systems.",
+      "validation": {
+        "score": 84,
+        "level": "manufacturer + studies",
+        "summary": "Product-scale validation; core AI architecture is proprietary."
+      },
+      "status": "closed",
+      "links": [
+        {
+          "label": "WS Audiology",
+          "url": "https://www.wsa.com/"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "demant",
+      "label": "Demant · Oticon",
+      "type": "company",
+      "primaryField": "commercial",
+      "fields": [
+        "commercial",
+        "audiology",
+        "spatial"
+      ],
+      "year": 1904,
+      "stage": "market leader",
+      "openness": 17,
+      "ecosystemValue": 96,
+      "scaleScore": 96,
+      "description": "Hearing-care group behind Oticon's DNN-based open-sound processing and extensive audiology research.",
+      "validation": {
+        "score": 88,
+        "level": "manufacturer + studies",
+        "summary": "Substantial hearing research and commercial evidence; models are closed."
+      },
+      "status": "closed",
+      "links": [
+        {
+          "label": "Demant",
+          "url": "https://www.demant.com/"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "gn",
+      "label": "GN Hearing · ReSound",
+      "type": "company",
+      "primaryField": "commercial",
+      "fields": [
+        "commercial",
+        "audiology",
+        "spatial"
+      ],
+      "year": 1869,
+      "stage": "market leader",
+      "openness": 17,
+      "ecosystemValue": 95,
+      "scaleScore": 94,
+      "valueLabel": "€2.3B enterprise value in the announced 2026 Amplifon transaction",
+      "description": "Hearing-aid platform known for connectivity, binaural directionality and recent dedicated AI processing.",
+      "validation": {
+        "score": 85,
+        "level": "manufacturer + studies",
+        "summary": "Commercial-scale evidence; exact network details are proprietary."
+      },
+      "status": "closed",
+      "links": [
+        {
+          "label": "GN Hearing",
+          "url": "https://www.gn.com/"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "starkey",
+      "label": "Starkey",
+      "type": "company",
+      "primaryField": "commercial",
+      "fields": [
+        "commercial",
+        "audiology",
+        "deployment"
+      ],
+      "year": 1967,
+      "stage": "market leader",
+      "openness": 15,
+      "ecosystemValue": 91,
+      "scaleScore": 90,
+      "description": "Independent hearing-aid manufacturer integrating neural processing, sensors and health features on-device.",
+      "validation": {
+        "score": 82,
+        "level": "manufacturer + studies",
+        "summary": "Commercial deployment with proprietary models."
+      },
+      "status": "closed",
+      "links": [
+        {
+          "label": "Starkey",
+          "url": "https://www.starkey.com/"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "apple",
+      "label": "Apple",
+      "type": "company",
+      "primaryField": "commercial",
+      "fields": [
+        "commercial",
+        "audiology",
+        "deployment"
+      ],
+      "year": 1976,
+      "stage": "consumer platform",
+      "openness": 20,
+      "ecosystemValue": 98,
+      "scaleScore": 100,
+      "description": "Made hearing assistance a mass-market OS and earbud capability through AirPods Pro and clinically validated hearing features.",
+      "validation": {
+        "score": 94,
+        "level": "regulatory + clinical",
+        "summary": "Regulated over-the-counter hearing-aid feature; internal processing remains closed."
+      },
+      "status": "closed",
+      "links": [
+        {
+          "label": "Hearing health",
+          "url": "https://www.apple.com/airpods-pro/hearing-health/"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "audatic",
+      "label": "Audatic",
+      "type": "company",
+      "primaryField": "enhancement",
+      "fields": [
+        "enhancement",
+        "audiology",
+        "commercial"
+      ],
+      "year": 2017,
+      "stage": "acquired",
+      "openness": 34,
+      "ecosystemValue": 87,
+      "scaleScore": 66,
+      "description": "Berlin deep-learning hearing startup whose research and team became part of Sonova/Phonak.",
+      "validation": {
+        "score": 79,
+        "level": "research + commercial transfer",
+        "summary": "Published research influenced a commercial product; weights and training data are unavailable."
+      },
+      "status": "acquired / closed",
+      "links": [
+        {
+          "label": "Sonova acquisition",
+          "url": "https://www.sonova.com/en/investors/transactions"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "fortell",
+      "label": "Fortell",
+      "type": "company",
+      "primaryField": "spatial",
+      "fields": [
+        "spatial",
+        "target",
+        "commercial"
+      ],
+      "year": 2023,
+      "stage": "startup",
+      "openness": 22,
+      "ecosystemValue": 78,
+      "scaleScore": 48,
+      "description": "Spatial-AI hearing startup focused on separating and rendering conversational sound scenes.",
+      "validation": {
+        "score": 46,
+        "level": "early company evidence",
+        "summary": "Interesting positioning; limited public technical and independent validation detail."
+      },
+      "status": "closed",
+      "links": [
+        {
+          "label": "Fortell",
+          "url": "https://www.fortell.ai/"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "orka",
+      "label": "Orka Labs",
+      "type": "company",
+      "primaryField": "commercial",
+      "fields": [
+        "commercial",
+        "enhancement",
+        "deployment"
+      ],
+      "year": 2018,
+      "stage": "startup / product",
+      "openness": 28,
+      "ecosystemValue": 77,
+      "scaleScore": 55,
+      "description": "Consumer hearing company publishing a low-latency multi-stage enhancement architecture derived from Clarity work.",
+      "validation": {
+        "score": 61,
+        "level": "challenge + product",
+        "summary": "Strong challenge result, with a documented generalization gap on the evaluation set."
+      },
+      "status": "mixed",
+      "links": [
+        {
+          "label": "Orka",
+          "url": "https://www.hiorka.com/"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "bose-research",
+      "label": "Bose Research",
+      "type": "research",
+      "primaryField": "deployment",
+      "fields": [
+        "deployment",
+        "enhancement",
+        "audiology"
+      ],
+      "year": 2020,
+      "stage": "research",
+      "openness": 48,
+      "ecosystemValue": 79,
+      "scaleScore": 86,
+      "description": "Published TinyLSTM and personalized PercepNet work targeting low-compute hearables and hearing enhancement.",
+      "validation": {
+        "score": 72,
+        "level": "peer reviewed",
+        "summary": "Relevant perceptual studies; implementations and weights are not consistently public."
+      },
+      "status": "paper / mixed",
+      "links": [
+        {
+          "label": "Bose research",
+          "url": "https://www.bose.com/research"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "gtcrn",
+      "label": "GTCRN Fast",
+      "type": "model",
+      "primaryField": "deployment",
+      "fields": [
+        "enhancement",
+        "deployment"
+      ],
+      "year": 2024,
+      "stage": "integrated",
+      "openness": 100,
+      "ecosystemValue": 88,
+      "description": "Ultra-light streaming speech enhancement with grouped temporal convolutions and recurrent paths. The fast 16 kHz ONNX variant is bundled in Melina.",
+      "architecture": [
+        "GTConv blocks",
+        "grouped RNN",
+        "STFT mask"
+      ],
+      "metrics": {
+        "stars": 721,
+        "downloads": null,
+        "parameters": "48.2 K",
+        "macs": "33.0 MMAC/s",
+        "latencyMs": 20,
+        "sampleRate": "16 kHz",
+        "forks": 116,
+        "openIssues": 8,
+        "repositoryUpdatedAt": "2026-08-03T09:15:12Z"
+      },
+      "validation": {
+        "score": 73,
+        "level": "benchmarks + device",
+        "summary": "Strong efficiency and objective benchmark results; not hearing-loss-specific."
+      },
+      "license": "MIT",
+      "status": "open weights",
+      "inMelina": true,
+      "githubRepo": "Xiaobin-Rong/gtcrn",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/Xiaobin-Rong/gtcrn"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "rnnoise",
+      "label": "RNNoise 0.2",
+      "type": "model",
+      "primaryField": "enhancement",
+      "fields": [
+        "enhancement",
+        "deployment"
+      ],
+      "year": 2017,
+      "stage": "integrated",
+      "openness": 100,
+      "ecosystemValue": 90,
+      "description": "Classic hybrid DSP/RNN suppressor. Tiny, stable and 48 kHz native; a vital baseline when latency and battery matter more than SOTA scores.",
+      "architecture": [
+        "Opus DSP features",
+        "GRU",
+        "band gains"
+      ],
+      "metrics": {
+        "stars": 5798,
+        "downloads": null,
+        "parameters": "~87 K",
+        "latencyMs": 10,
+        "sampleRate": "48 kHz",
+        "forks": 1070,
+        "openIssues": 205,
+        "repositoryUpdatedAt": "2025-02-22T23:58:31Z"
+      },
+      "validation": {
+        "score": 88,
+        "level": "production + listening tests",
+        "summary": "Mature production use and perceptual evaluation."
+      },
+      "license": "BSD-3-Clause",
+      "status": "open weights",
+      "inMelina": true,
+      "githubRepo": "xiph/rnnoise",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/xiph/rnnoise"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "ul-unas",
+      "label": "UL-UNAS Stream",
+      "type": "model",
+      "primaryField": "deployment",
+      "fields": [
+        "enhancement",
+        "deployment"
+      ],
+      "year": 2024,
+      "stage": "integrated",
+      "openness": 100,
+      "ecosystemValue": 82,
+      "description": "Architecture-searched ultra-light streaming denoiser, included in Melina through sherpa-onnx.",
+      "architecture": [
+        "U-Net NAS",
+        "streaming state",
+        "STFT"
+      ],
+      "metrics": {
+        "stars": 200,
+        "downloads": null,
+        "parameters": "~100 K class",
+        "latencyMs": 20,
+        "sampleRate": "16 kHz",
+        "forks": 28,
+        "openIssues": 3,
+        "repositoryUpdatedAt": "2026-06-17T02:15:14Z"
+      },
+      "validation": {
+        "score": 68,
+        "level": "benchmark + device",
+        "summary": "Efficient open model; limited hearing-specific evaluation."
+      },
+      "license": "MIT",
+      "status": "open weights",
+      "inMelina": true,
+      "githubRepo": "Xiaobin-Rong/ul-unas",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/Xiaobin-Rong/ul-unas"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "deepfilternet3",
+      "label": "DeepFilterNet3",
+      "type": "model",
+      "primaryField": "enhancement",
+      "fields": [
+        "enhancement",
+        "deployment"
+      ],
+      "year": 2023,
+      "stage": "integrated",
+      "openness": 100,
+      "ecosystemValue": 92,
+      "description": "Full-band 48 kHz neural filtering with perceptually motivated ERB features. Melina includes a high-quality desktop backend.",
+      "architecture": [
+        "ERB encoder",
+        "complex deep filtering",
+        "GRU"
+      ],
+      "metrics": {
+        "stars": 4624,
+        "downloads": null,
+        "parameters": "~2.3 M",
+        "latencyMs": 20,
+        "sampleRate": "48 kHz",
+        "forks": 504,
+        "openIssues": 66,
+        "repositoryUpdatedAt": "2024-10-17T08:35:11Z"
+      },
+      "validation": {
+        "score": 84,
+        "level": "benchmarks + broad adoption",
+        "summary": "Strong open full-band baseline with deployable Rust/C API."
+      },
+      "license": "MIT OR Apache-2.0",
+      "status": "open weights",
+      "inMelina": true,
+      "githubRepo": "Rikorose/DeepFilterNet",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/Rikorose/DeepFilterNet"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "dpdfnet",
+      "label": "DPDFNet 2 · 4 · 8",
+      "type": "model",
+      "primaryField": "deployment",
+      "fields": [
+        "enhancement",
+        "deployment"
+      ],
+      "year": 2023,
+      "stage": "integrated",
+      "openness": 100,
+      "ecosystemValue": 81,
+      "description": "A scalable CEVA denoising family. Melina exposes three 16 kHz sizes plus a 48 kHz HQ variant to explore the quality/compute curve.",
+      "architecture": [
+        "dual-path depthwise blocks",
+        "frequency recurrence",
+        "streaming STFT"
+      ],
+      "metrics": {
+        "stars": 135,
+        "downloads": null,
+        "parameters": "45 K–164 K",
+        "macs": "low-MMAC class",
+        "latencyMs": 32,
+        "sampleRate": "16/48 kHz",
+        "forks": 16,
+        "openIssues": 2,
+        "repositoryUpdatedAt": "2026-07-22T07:48:24Z"
+      },
+      "validation": {
+        "score": 70,
+        "level": "benchmark + device",
+        "summary": "Open, compact and measurable on-device; hearing benefit remains to validate."
+      },
+      "license": "Apache-2.0",
+      "status": "open weights",
+      "inMelina": true,
+      "githubRepo": "ceva-ip/DPDFNet",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/ceva-ip/DPDFNet"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "classic-dsp",
+      "label": "Classic DSP",
+      "type": "model",
+      "primaryField": "deployment",
+      "fields": [
+        "enhancement",
+        "deployment",
+        "audiology"
+      ],
+      "year": 2026,
+      "stage": "integrated baseline",
+      "openness": 100,
+      "ecosystemValue": 66,
+      "description": "Deterministic low-cost baseline in Melina: filtering, dynamics and gain staging without neural inference.",
+      "architecture": [
+        "high-pass",
+        "noise gate",
+        "compressor",
+        "limiter"
+      ],
+      "metrics": {
+        "stars": null,
+        "downloads": null,
+        "parameters": 0,
+        "latencyMs": "buffer-bound",
+        "sampleRate": "native"
+      },
+      "validation": {
+        "score": 62,
+        "level": "device baseline",
+        "summary": "Transparent and stable; less selective than neural enhancement."
+      },
+      "license": "Repository license",
+      "status": "open",
+      "inMelina": true
+    },
+    {
+      "id": "silero-vad",
+      "label": "Silero VAD",
+      "type": "model",
+      "primaryField": "deployment",
+      "fields": [
+        "deployment",
+        "target"
+      ],
+      "year": 2021,
+      "stage": "integrated",
+      "openness": 100,
+      "ecosystemValue": 85,
+      "description": "Compact voice activity detector used as a control signal in Melina, not as an enhancer.",
+      "architecture": [
+        "convolutional encoder",
+        "recurrent state"
+      ],
+      "metrics": {
+        "stars": 10043,
+        "downloads": null,
+        "parameters": "~2 M",
+        "latencyMs": null,
+        "sampleRate": "8/16 kHz",
+        "forks": 832,
+        "openIssues": 11,
+        "repositoryUpdatedAt": "2026-08-24T06:47:25Z"
+      },
+      "validation": {
+        "score": 82,
+        "level": "broad adoption",
+        "summary": "Mature open VAD with broad language and noise coverage."
+      },
+      "license": "MIT",
+      "status": "open weights",
+      "inMelina": true,
+      "githubRepo": "snakers4/silero-vad",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/snakers4/silero-vad"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "ten-vad",
+      "label": "TEN VAD",
+      "type": "model",
+      "primaryField": "deployment",
+      "fields": [
+        "deployment",
+        "target"
+      ],
+      "year": 2024,
+      "stage": "optional integration",
+      "openness": 55,
+      "ecosystemValue": 69,
+      "description": "Efficient VAD available as an optional Melina backend. Its additional license restrictions require careful distribution review.",
+      "architecture": [
+        "streaming neural VAD"
+      ],
+      "metrics": {
+        "stars": 2246,
+        "downloads": null,
+        "parameters": null,
+        "latencyMs": null,
+        "sampleRate": "16 kHz",
+        "forks": 177,
+        "openIssues": 26,
+        "repositoryUpdatedAt": "2026-02-02T02:51:42Z"
+      },
+      "validation": {
+        "score": 64,
+        "level": "benchmark",
+        "summary": "Promising realtime VAD; license is less permissive than MIT/BSD alternatives."
+      },
+      "license": "Custom TEN / Agora terms",
+      "status": "source available",
+      "inMelina": true,
+      "githubRepo": "TEN-framework/ten-vad",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/TEN-framework/ten-vad"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "semantic-hearing",
+      "label": "Semantic Hearing",
+      "type": "model",
+      "primaryField": "target",
+      "fields": [
+        "target",
+        "spatial",
+        "deployment"
+      ],
+      "year": 2023,
+      "stage": "research prototype",
+      "openness": 92,
+      "ecosystemValue": 96,
+      "description": "Binaural causal system that lets a listener choose among 20 semantic sound classes while preserving spatial cues.",
+      "architecture": [
+        "SEANet-like separator",
+        "semantic class conditioning",
+        "binaural streaming"
+      ],
+      "metrics": {
+        "stars": 100,
+        "downloads": null,
+        "parameters": null,
+        "latencyMs": 6.56,
+        "sampleRate": "48 kHz",
+        "forks": 21,
+        "openIssues": 1,
+        "repositoryUpdatedAt": "2024-03-28T21:28:03Z"
+      },
+      "validation": {
+        "score": 88,
+        "level": "prototype + human evidence",
+        "summary": "Public code/checkpoint and real connected-smartphone latency."
+      },
+      "license": "Research open source",
+      "status": "open checkpoint",
+      "inMelina": false,
+      "githubRepo": "vb000/SemanticHearing",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/vb000/SemanticHearing"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "look-once",
+      "label": "Look Once to Hear",
+      "type": "model",
+      "primaryField": "target",
+      "fields": [
+        "target",
+        "deployment",
+        "spatial"
+      ],
+      "year": 2024,
+      "stage": "research prototype",
+      "openness": 76,
+      "ecosystemValue": 95,
+      "description": "Enrolls a target voice from a brief visual/audio cue, then tracks and extracts it in realtime on a mobile device.",
+      "architecture": [
+        "speaker embedding",
+        "causal separator",
+        "enrollment network"
+      ],
+      "metrics": {
+        "stars": 606,
+        "downloads": null,
+        "parameters": null,
+        "latencyMs": 18.24,
+        "sampleRate": "16 kHz",
+        "forks": 66,
+        "openIssues": 5,
+        "repositoryUpdatedAt": "2026-07-22T00:25:19Z"
+      },
+      "validation": {
+        "score": 86,
+        "level": "prototype + human evidence",
+        "summary": "Code and training pipeline are public; license is non-commercial."
+      },
+      "license": "UW non-commercial research license",
+      "status": "open / restricted",
+      "inMelina": false,
+      "githubRepo": "vb000/LookOnceToHear",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/vb000/LookOnceToHear"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "aurchestra",
+      "label": "Aurchestra",
+      "type": "model",
+      "primaryField": "target",
+      "fields": [
+        "target",
+        "spatial",
+        "deployment",
+        "evaluation"
+      ],
+      "year": 2026,
+      "stage": "open award-winning artifact",
+      "openness": 96,
+      "ecosystemValue": 98,
+      "description": "Fine-grained soundscape control for augmented hearing: separates up to five active sound classes into independently mixable realtime streams on constrained edge platforms.",
+      "architecture": [
+        "TF-GridNet / TF-MLPNet variants",
+        "FiLM class conditioning",
+        "multi-output extraction",
+        "HRTF binaural synthesis"
+      ],
+      "metrics": {
+        "stars": 1,
+        "downloads": 0,
+        "parameters": "0.5–1.9 M",
+        "latencyMs": "10 ms algorithmic; 6 ms chunks",
+        "sampleRate": "16 kHz",
+        "forks": 2,
+        "openIssues": 0,
+        "repositoryUpdatedAt": "2026-05-08T18:02:51Z",
+        "hfLikes": 0,
+        "modelUpdatedAt": "2026-04-12T04:14:36.000Z"
+      },
+      "validation": {
+        "score": 94,
+        "level": "open artifact + real-world evaluation",
+        "summary": "MobiSys 2026 Best Artifact; open code, checkpoints and a public 125 GB binaural dataset setup."
+      },
+      "license": "MIT",
+      "status": "open code + weights",
+      "inMelina": false,
+      "githubRepo": "ooshyun/fine_grained_soundscape_control",
+      "hfModel": "ooshyun/fine_grained_soundscape_control",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/ooshyun/fine_grained_soundscape_control"
+        },
+        {
+          "label": "Paper",
+          "url": "https://arxiv.org/abs/2603.00395"
+        },
+        {
+          "label": "Hugging Face",
+          "url": "https://huggingface.co/ooshyun/fine_grained_soundscape_control"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "proactive-hearing",
+      "label": "Proactive Hearing Assistant",
+      "type": "model",
+      "primaryField": "target",
+      "fields": [
+        "target",
+        "spatial",
+        "deployment",
+        "evaluation"
+      ],
+      "year": 2025,
+      "stage": "open research prototype",
+      "openness": 96,
+      "ecosystemValue": 97,
+      "description": "Automatically infers the wearer's conversation partners from self-speech, turn-taking and dialogue dynamics, without manual enrollment or prompts.",
+      "architecture": [
+        "fast streaming separator",
+        "slow conversation-context model",
+        "egocentric binaural audio",
+        "self-speech anchor"
+      ],
+      "metrics": {
+        "stars": 46,
+        "downloads": 0,
+        "parameters": "dual-model system",
+        "latencyMs": "12.5 ms streaming updates",
+        "sampleRate": "speech",
+        "hfLikes": 2,
+        "modelUpdatedAt": "2025-11-20T02:34:26.000Z",
+        "forks": 4,
+        "openIssues": 1,
+        "repositoryUpdatedAt": "2025-11-19T11:07:50Z"
+      },
+      "validation": {
+        "score": 93,
+        "level": "real-world 11-person study",
+        "summary": "Evaluated on 6.8 hours of real two- and three-speaker egocentric conversations; open code, model card and training dataset."
+      },
+      "license": "MIT",
+      "status": "open code + dataset",
+      "inMelina": false,
+      "githubRepo": "guilinhu/proactive_hearing_assistant",
+      "hfModel": "guilinhu/proactive_hearing",
+      "links": [
+        {
+          "label": "Project page",
+          "url": "https://proactivehearing.cs.washington.edu/"
+        },
+        {
+          "label": "Repository",
+          "url": "https://github.com/guilinhu/proactive_hearing_assistant"
+        },
+        {
+          "label": "Paper",
+          "url": "https://aclanthology.org/2025.emnlp-main.1289/"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "tf-mlpnet",
+      "label": "TF-MLPNet",
+      "type": "model",
+      "primaryField": "deployment",
+      "fields": [
+        "target",
+        "enhancement",
+        "deployment"
+      ],
+      "year": 2025,
+      "stage": "hardware research",
+      "openness": 52,
+      "ecosystemValue": 94,
+      "description": "Tiny mixed-precision realtime speech separation network built for low-power neural accelerators in hearables and hearing aids.",
+      "architecture": [
+        "time-frequency MLP",
+        "channel/frequency mixing",
+        "temporal convolution",
+        "mixed-precision QAT"
+      ],
+      "metrics": {
+        "stars": null,
+        "downloads": null,
+        "parameters": "0.7 M class",
+        "latencyMs": "<6 ms inference on GAP9; 6 ms chunks",
+        "sampleRate": "16 kHz"
+      },
+      "validation": {
+        "score": 86,
+        "level": "physical low-power hardware",
+        "summary": "Demonstrated in realtime on GAP9 with a 3.5–4× runtime reduction over prior streaming separators; turnkey model packaging is limited."
+      },
+      "status": "paper + artifact lineage",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "Paper",
+          "url": "https://arxiv.org/abs/2508.03047"
+        }
+      ]
+    },
+    {
+      "id": "sound-bubble",
+      "label": "Sound Bubble",
+      "type": "model",
+      "primaryField": "spatial",
+      "fields": [
+        "spatial",
+        "target",
+        "deployment",
+        "evaluation"
+      ],
+      "year": 2024,
+      "stage": "open research prototype",
+      "openness": 94,
+      "ecosystemValue": 95,
+      "description": "Creates a programmable 1–2 metre listening bubble: speech inside remains audible while voices and noise outside are suppressed.",
+      "architecture": [
+        "six-microphone distance-aware separator",
+        "streaming neural network",
+        "ONNX edge export"
+      ],
+      "metrics": {
+        "stars": 69,
+        "downloads": null,
+        "parameters": "0.3–0.5 M",
+        "latencyMs": "12 ms algorithmic; 6.36 ms compute for 8 ms chunk",
+        "sampleRate": "speech",
+        "forks": 13,
+        "openIssues": 1,
+        "repositoryUpdatedAt": "2025-08-15T20:30:55Z"
+      },
+      "validation": {
+        "score": 93,
+        "level": "real-world prototype",
+        "summary": "Open training code/checkpoint path and real-world evaluation in unseen environments and wearers; reports 49 dB outside-bubble suppression."
+      },
+      "license": "MIT",
+      "status": "open code + checkpoint",
+      "inMelina": false,
+      "githubRepo": "chentuochao/Sound_Bubble",
+      "links": [
+        {
+          "label": "Project page",
+          "url": "https://soundbubble.cs.washington.edu/"
+        },
+        {
+          "label": "Repository",
+          "url": "https://github.com/chentuochao/Sound_Bubble"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "waveformer",
+      "label": "Waveformer",
+      "type": "model",
+      "primaryField": "target",
+      "fields": [
+        "target",
+        "deployment",
+        "enhancement"
+      ],
+      "year": 2023,
+      "stage": "open research reference",
+      "openness": 96,
+      "ecosystemValue": 88,
+      "description": "Low-latency target-sound extraction architecture that became a reference baseline for semantic and fine-grained augmented hearing.",
+      "architecture": [
+        "Waveformer separator",
+        "target-sound conditioning",
+        "causal streaming"
+      ],
+      "metrics": {
+        "stars": 326,
+        "downloads": null,
+        "parameters": "1.7 M",
+        "latencyMs": "realtime streaming",
+        "sampleRate": "speech",
+        "forks": 35,
+        "openIssues": 5,
+        "repositoryUpdatedAt": "2023-08-15T09:47:20Z"
+      },
+      "validation": {
+        "score": 82,
+        "level": "open reproducible benchmark",
+        "summary": "Public code and model; now outperformed by Aurchestra variants but valuable as a causal baseline."
+      },
+      "license": "Research open source",
+      "status": "open code",
+      "inMelina": false,
+      "githubRepo": "vb000/Waveformer",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/vb000/Waveformer"
+        },
+        {
+          "label": "Project page",
+          "url": "https://targetsound.cs.washington.edu/"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "hybridbeam",
+      "label": "HybridBeam",
+      "type": "model",
+      "primaryField": "spatial",
+      "fields": [
+        "spatial",
+        "target",
+        "deployment"
+      ],
+      "year": 2022,
+      "stage": "open research reference",
+      "openness": 96,
+      "ecosystemValue": 84,
+      "description": "Hybrid neural beamforming for on-device directional hearing, combining learned acoustic inference with controllable spatial processing.",
+      "architecture": [
+        "hybrid neural network",
+        "directional beamforming",
+        "on-device inference"
+      ],
+      "metrics": {
+        "stars": 19,
+        "downloads": null,
+        "parameters": null,
+        "latencyMs": "realtime",
+        "sampleRate": "speech",
+        "forks": 8,
+        "openIssues": 1,
+        "repositoryUpdatedAt": "2024-04-10T06:32:04Z"
+      },
+      "validation": {
+        "score": 80,
+        "level": "open prototype + benchmark",
+        "summary": "Public AAAI implementation and an important precursor to later UW programmable-hearing systems."
+      },
+      "status": "open code",
+      "inMelina": false,
+      "githubRepo": "wanganran/HybridBeam",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/wanganran/HybridBeam"
+        },
+        {
+          "label": "Project page",
+          "url": "https://directionalhearing.cs.washington.edu/"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "deep-fir",
+      "label": "Deep FIR",
+      "type": "model",
+      "primaryField": "deployment",
+      "fields": [
+        "enhancement",
+        "audiology",
+        "deployment"
+      ],
+      "year": 2024,
+      "stage": "paper only",
+      "openness": 38,
+      "ecosystemValue": 93,
+      "description": "Google hearing-aid architecture that directly predicts minimum-phase FIR filters for sub-millisecond algorithmic latency.",
+      "architecture": [
+        "minimum-phase FIR",
+        "causal feature encoder",
+        "filter prediction"
+      ],
+      "metrics": {
+        "stars": null,
+        "downloads": null,
+        "parameters": "626–644 K",
+        "latencyMs": "0.32–1.25 ms algorithmic; 3.35 ms reported E2E",
+        "sampleRate": "hearing-aid band"
+      },
+      "validation": {
+        "score": 80,
+        "level": "peer reviewed benchmark",
+        "summary": "Excellent latency/quality point; no public training code or weights."
+      },
+      "license": "No public implementation",
+      "status": "paper only",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "Paper",
+          "url": "https://arxiv.org/abs/2409.18239"
+        },
+        {
+          "label": "Project page",
+          "url": "https://google-research.github.io/sound-separation/papers/deepfir/"
+        }
+      ]
+    },
+    {
+      "id": "googlears",
+      "label": "Googlears",
+      "type": "model",
+      "primaryField": "spatial",
+      "fields": [
+        "spatial",
+        "audiology",
+        "deployment"
+      ],
+      "year": 2024,
+      "stage": "paper only",
+      "openness": 35,
+      "ecosystemValue": 91,
+      "description": "Low-latency neural multiframe beamforming plus adaptive equalization designed for hearing aids.",
+      "architecture": [
+        "neural multiframe beamformer",
+        "RLS",
+        "equalizer"
+      ],
+      "metrics": {
+        "stars": null,
+        "downloads": null,
+        "parameters": null,
+        "latencyMs": "<5 ms",
+        "sampleRate": "hearing-aid"
+      },
+      "validation": {
+        "score": 78,
+        "level": "peer reviewed benchmark",
+        "summary": "Relevant end-to-end hearing architecture; no public weights."
+      },
+      "status": "paper only",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "Publication",
+          "url": "https://research.google/pubs/listening-with-googlears-low-latency-neural-multiframe-beamforming-and-equalization-for-hearing-aids/"
+        }
+      ]
+    },
+    {
+      "id": "dal",
+      "label": "Differentiable Auditory Loss Compensation",
+      "type": "model",
+      "primaryField": "audiology",
+      "fields": [
+        "audiology",
+        "enhancement",
+        "evaluation"
+      ],
+      "year": 2026,
+      "stage": "proof of concept",
+      "openness": 58,
+      "ecosystemValue": 94,
+      "description": "Trains enhancement through differentiable normal/impaired cochlear models, optimizing toward what a listener with hearing loss can recover.",
+      "architecture": [
+        "CARFAC",
+        "SEANet",
+        "differentiable hearing loss"
+      ],
+      "metrics": {
+        "stars": null,
+        "downloads": null,
+        "parameters": null,
+        "latencyMs": null,
+        "sampleRate": "audio"
+      },
+      "validation": {
+        "score": 67,
+        "level": "simulation proof of concept",
+        "summary": "Compelling objective; hardware and clinical testing are explicitly future work."
+      },
+      "status": "paper; partial tooling open",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "Paper",
+          "url": "https://arxiv.org/abs/2606.04103"
+        }
+      ]
+    },
+    {
+      "id": "cruse-3ms",
+      "label": "3 ms CRUSE",
+      "type": "model",
+      "primaryField": "deployment",
+      "fields": [
+        "enhancement",
+        "deployment"
+      ],
+      "year": 2025,
+      "stage": "paper only",
+      "openness": 32,
+      "ecosystemValue": 89,
+      "description": "Microsoft study configuration demonstrating that latency-aware training can make a 3 ms model competitive with 20 ms enhancement.",
+      "architecture": [
+        "CRUSE",
+        "asymmetric STFT",
+        "causal recurrence"
+      ],
+      "metrics": {
+        "stars": null,
+        "downloads": null,
+        "parameters": "large CRUSE class",
+        "latencyMs": 3,
+        "sampleRate": "16 kHz"
+      },
+      "validation": {
+        "score": 77,
+        "level": "comprehensive benchmark",
+        "summary": "Well-controlled latency study; weights and implementation are not released."
+      },
+      "status": "paper only",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "Study",
+          "url": "https://www.microsoft.com/en-us/research/publication/ultra-low-latency-speech-enhancement-a-comprehensive-study/"
+        }
+      ]
+    },
+    {
+      "id": "rt-tango",
+      "label": "RT-Tango",
+      "type": "model",
+      "primaryField": "spatial",
+      "fields": [
+        "spatial",
+        "enhancement",
+        "deployment"
+      ],
+      "year": 2026,
+      "stage": "paper only",
+      "openness": 34,
+      "ecosystemValue": 90,
+      "description": "Realtime binaural enhancement combining efficient neural masks with a spatial distortion-weighted multichannel Wiener filter.",
+      "architecture": [
+        "ERB features",
+        "grouped RNN",
+        "frame skipping",
+        "asymmetric STFT",
+        "SDW-MWF"
+      ],
+      "metrics": {
+        "stars": null,
+        "downloads": null,
+        "parameters": null,
+        "latencyMs": 8,
+        "sampleRate": "hearing-aid"
+      },
+      "validation": {
+        "score": 76,
+        "level": "peer reviewed benchmark",
+        "summary": "Excellent architecture target; no official code or weights found."
+      },
+      "status": "paper only",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "Paper",
+          "url": "https://arxiv.org/abs/2607.01834"
+        }
+      ]
+    },
+    {
+      "id": "mn-tango",
+      "label": "MN-TANGO",
+      "type": "model",
+      "primaryField": "deployment",
+      "fields": [
+        "enhancement",
+        "deployment"
+      ],
+      "year": 2026,
+      "stage": "paper only",
+      "openness": 34,
+      "ecosystemValue": 86,
+      "description": "Extreme-efficiency TANGO derivative targeting tiny always-on audio hardware.",
+      "architecture": [
+        "mobile neural blocks",
+        "streaming mask estimation"
+      ],
+      "metrics": {
+        "stars": null,
+        "downloads": null,
+        "parameters": "0.177 MB model",
+        "macs": "4.65 MMAC/s",
+        "latencyMs": null,
+        "sampleRate": "speech"
+      },
+      "validation": {
+        "score": 68,
+        "level": "benchmark",
+        "summary": "Exceptional efficiency claims; implementation and weights are unavailable."
+      },
+      "status": "paper only",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "Paper",
+          "url": "https://arxiv.org/abs/2607.08645"
+        }
+      ]
+    },
+    {
+      "id": "neural-aids",
+      "label": "NeuralAids",
+      "type": "model",
+      "primaryField": "deployment",
+      "fields": [
+        "enhancement",
+        "audiology",
+        "deployment"
+      ],
+      "year": 2025,
+      "stage": "paper only",
+      "openness": 31,
+      "ecosystemValue": 88,
+      "description": "Energy-aware neural hearing-aid prototype reporting realtime MCU-class performance.",
+      "architecture": [
+        "streaming enhancement",
+        "hardware-aware optimization"
+      ],
+      "metrics": {
+        "stars": null,
+        "downloads": null,
+        "parameters": null,
+        "latencyMs": 5.54,
+        "power": "71.6 mW",
+        "sampleRate": "speech"
+      },
+      "validation": {
+        "score": 69,
+        "level": "hardware benchmark",
+        "summary": "Promising power and latency; no public model code."
+      },
+      "status": "paper only",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "Paper",
+          "url": "https://arxiv.org/abs/2503.18698"
+        }
+      ]
+    },
+    {
+      "id": "cofi-lite",
+      "label": "CoFi-Lite",
+      "type": "model",
+      "primaryField": "deployment",
+      "fields": [
+        "enhancement",
+        "deployment"
+      ],
+      "year": 2026,
+      "stage": "announced code",
+      "openness": 46,
+      "ecosystemValue": 83,
+      "description": "Ultra-lightweight speech enhancement accepted to IEEE SPL. Repository exists, but code and weights await commercial IP review.",
+      "architecture": [
+        "coarse-to-fine lightweight network"
+      ],
+      "metrics": {
+        "stars": 28,
+        "downloads": null,
+        "parameters": null,
+        "latencyMs": null,
+        "sampleRate": "speech",
+        "forks": 0,
+        "openIssues": 0,
+        "repositoryUpdatedAt": "2026-07-14T12:29:21Z"
+      },
+      "validation": {
+        "score": 62,
+        "level": "paper benchmark",
+        "summary": "Official repository targets a January 2027 academic release."
+      },
+      "status": "placeholder repository",
+      "inMelina": false,
+      "githubRepo": "Acceleration123/CoFi-Lite",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/Acceleration123/CoFi-Lite"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "dtln",
+      "label": "DTLN",
+      "type": "model",
+      "primaryField": "enhancement",
+      "fields": [
+        "enhancement",
+        "deployment"
+      ],
+      "year": 2020,
+      "stage": "open reference",
+      "openness": 100,
+      "ecosystemValue": 82,
+      "description": "Two-stage time-frequency/time-domain recurrent denoiser and an important open low-latency baseline.",
+      "architecture": [
+        "STFT separation core",
+        "1D convolution core",
+        "LSTM"
+      ],
+      "metrics": {
+        "stars": 738,
+        "downloads": null,
+        "parameters": "~1 M",
+        "latencyMs": 32,
+        "sampleRate": "16 kHz",
+        "forks": 175,
+        "openIssues": 44,
+        "repositoryUpdatedAt": "2023-07-28T09:47:18Z"
+      },
+      "validation": {
+        "score": 78,
+        "level": "benchmarks + reproducible code",
+        "summary": "Mature reproducible baseline; latency is above strict hearing-aid targets."
+      },
+      "license": "MIT",
+      "status": "open weights",
+      "inMelina": false,
+      "githubRepo": "breizhn/DTLN",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/breizhn/DTLN"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "clearervoice",
+      "label": "ClearerVoice Studio",
+      "type": "model",
+      "primaryField": "enhancement",
+      "fields": [
+        "enhancement",
+        "target",
+        "evaluation"
+      ],
+      "year": 2024,
+      "stage": "open model suite",
+      "openness": 92,
+      "ecosystemValue": 87,
+      "description": "Large open suite spanning FRCRN, MossFormer2 enhancement/separation, super-resolution and audiovisual target extraction.",
+      "architecture": [
+        "FRCRN",
+        "MossFormer2",
+        "audio-visual extraction"
+      ],
+      "metrics": {
+        "stars": 4440,
+        "downloads": null,
+        "parameters": "multi-model",
+        "latencyMs": "mostly offline / unconstrained",
+        "sampleRate": "16/48 kHz",
+        "forks": 364,
+        "openIssues": 90,
+        "repositoryUpdatedAt": "2025-08-14T08:26:31Z"
+      },
+      "validation": {
+        "score": 76,
+        "level": "benchmarks + public weights",
+        "summary": "Excellent research and adaptation source; most models are not strict realtime hearing architectures."
+      },
+      "license": "Apache-2.0",
+      "status": "open weights",
+      "inMelina": false,
+      "githubRepo": "modelscope/ClearerVoice-Studio",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/modelscope/ClearerVoice-Studio"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "tiger",
+      "label": "TIGER",
+      "type": "model",
+      "primaryField": "target",
+      "fields": [
+        "target",
+        "enhancement"
+      ],
+      "year": 2024,
+      "stage": "research model",
+      "openness": 76,
+      "ecosystemValue": 79,
+      "description": "Efficient time-frequency interleaved speaker separation architecture relevant to target-speaker research, but not designed around hearing-aid latency.",
+      "architecture": [
+        "time-frequency grid",
+        "interleaved recurrent blocks"
+      ],
+      "metrics": {
+        "stars": null,
+        "downloads": null,
+        "parameters": null,
+        "latencyMs": "not strict realtime",
+        "sampleRate": "speech"
+      },
+      "validation": {
+        "score": 67,
+        "level": "benchmark",
+        "summary": "Strong separation results; deployment path requires causal redesign."
+      },
+      "status": "research",
+      "inMelina": false
+    },
+    {
+      "id": "clearbuds",
+      "label": "ClearBuds",
+      "type": "model",
+      "primaryField": "spatial",
+      "fields": [
+        "spatial",
+        "enhancement",
+        "deployment"
+      ],
+      "year": 2022,
+      "stage": "open hardware prototype",
+      "openness": 91,
+      "ecosystemValue": 90,
+      "description": "Synchronized wireless binaural microphones plus lightweight mobile neural separation, evaluated in the wild.",
+      "architecture": [
+        "dual-channel separator",
+        "binaural synchronization",
+        "mobile inference"
+      ],
+      "metrics": {
+        "stars": 10,
+        "downloads": null,
+        "parameters": null,
+        "latencyMs": 21.4,
+        "sampleRate": "mobile audio",
+        "forks": 7,
+        "openIssues": 0,
+        "repositoryUpdatedAt": "2022-07-12T21:19:24Z"
+      },
+      "validation": {
+        "score": 91,
+        "level": "37-person user study",
+        "summary": "1,041 ratings and 15.4 hours of in-the-wild evaluation."
+      },
+      "license": "GPL-3.0 firmware",
+      "status": "open prototype",
+      "inMelina": false,
+      "githubRepo": "uw-x/clearbuds-fw",
+      "links": [
+        {
+          "label": "Firmware",
+          "url": "https://github.com/uw-x/clearbuds-fw"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "percepnet",
+      "label": "PercepNet",
+      "type": "model",
+      "primaryField": "audiology",
+      "fields": [
+        "enhancement",
+        "audiology",
+        "deployment"
+      ],
+      "year": 2020,
+      "stage": "research reference",
+      "openness": 62,
+      "ecosystemValue": 86,
+      "description": "Perceptually motivated full-band enhancement using ERB-band gains and pitch filtering, designed for low complexity.",
+      "architecture": [
+        "ERB bands",
+        "pitch filtering",
+        "GRU"
+      ],
+      "metrics": {
+        "stars": null,
+        "downloads": null,
+        "parameters": "~8 M weights class",
+        "latencyMs": 10,
+        "sampleRate": "48 kHz"
+      },
+      "validation": {
+        "score": 84,
+        "level": "listening tests",
+        "summary": "Strong perceptual basis and low delay; canonical public packaging is less direct than RNNoise."
+      },
+      "status": "paper / partial code",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "Paper",
+          "url": "https://arxiv.org/abs/2008.04259"
+        }
+      ]
+    },
+    {
+      "id": "personalized-percepnet",
+      "label": "Personalized PercepNet",
+      "type": "model",
+      "primaryField": "target",
+      "fields": [
+        "target",
+        "audiology",
+        "deployment"
+      ],
+      "year": 2021,
+      "stage": "paper prototype",
+      "openness": 40,
+      "ecosystemValue": 84,
+      "description": "Conditions PercepNet on a target-speaker representation to suppress competing talkers while retaining low complexity.",
+      "architecture": [
+        "PercepNet",
+        "speaker embedding",
+        "pitch filtering"
+      ],
+      "metrics": {
+        "stars": null,
+        "downloads": null,
+        "parameters": null,
+        "latencyMs": "low-delay",
+        "sampleRate": "48 kHz"
+      },
+      "validation": {
+        "score": 78,
+        "level": "listening tests",
+        "summary": "Highly relevant personalization concept; no turnkey public weights."
+      },
+      "status": "paper / partial",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "Paper",
+          "url": "https://arxiv.org/abs/2106.04129"
+        }
+      ]
+    },
+    {
+      "id": "tiny-lstms",
+      "label": "Bose TinyLSTMs",
+      "type": "model",
+      "primaryField": "deployment",
+      "fields": [
+        "enhancement",
+        "deployment"
+      ],
+      "year": 2020,
+      "stage": "paper prototype",
+      "openness": 39,
+      "ecosystemValue": 78,
+      "description": "Structured compression and pruning for tiny recurrent speech enhancement on constrained hearables.",
+      "architecture": [
+        "LSTM pruning",
+        "low-rank matrices",
+        "quantization"
+      ],
+      "metrics": {
+        "stars": null,
+        "downloads": null,
+        "parameters": "tiny recurrent class",
+        "latencyMs": "realtime",
+        "sampleRate": "speech"
+      },
+      "validation": {
+        "score": 70,
+        "level": "benchmark",
+        "summary": "Useful efficient design evidence; no maintained turnkey model."
+      },
+      "status": "paper only",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "Paper",
+          "url": "https://arxiv.org/abs/2005.11138"
+        }
+      ]
+    },
+    {
+      "id": "orka-model",
+      "label": "Orka multi-stage enhancer",
+      "type": "model",
+      "primaryField": "enhancement",
+      "fields": [
+        "enhancement",
+        "audiology",
+        "deployment"
+      ],
+      "year": 2025,
+      "stage": "paper + product lineage",
+      "openness": 37,
+      "ecosystemValue": 81,
+      "description": "Clarity-derived multi-stage system combining denoising, dereverberation and hearing-loss compensation.",
+      "architecture": [
+        "multi-stage neural enhancement",
+        "hearing-loss compensation"
+      ],
+      "metrics": {
+        "stars": null,
+        "downloads": null,
+        "parameters": "7 M",
+        "macs": "86 GFLOP/s reported",
+        "latencyMs": 4,
+        "sampleRate": "hearing-aid"
+      },
+      "validation": {
+        "score": 66,
+        "level": "Clarity challenge",
+        "summary": "Top-five development result with poor evaluation-set generalization documented by the authors."
+      },
+      "status": "paper only",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "Paper",
+          "url": "https://arxiv.org/abs/2508.04283"
+        }
+      ]
+    },
+    {
+      "id": "columbia-bci",
+      "label": "Brain-controlled hearing",
+      "type": "model",
+      "primaryField": "target",
+      "fields": [
+        "target",
+        "audiology",
+        "evaluation"
+      ],
+      "year": 2026,
+      "stage": "clinical research",
+      "openness": 88,
+      "ecosystemValue": 94,
+      "description": "Real-time auditory attention decoding steers speech separation toward the attended speaker using intracranial neural signals.",
+      "architecture": [
+        "auditory attention decoder",
+        "speech separator",
+        "iEEG"
+      ],
+      "metrics": {
+        "stars": 8,
+        "downloads": null,
+        "parameters": null,
+        "latencyMs": "realtime",
+        "sampleRate": "speech + iEEG",
+        "forks": 1,
+        "openIssues": 0,
+        "repositoryUpdatedAt": "2026-05-17T02:13:55Z"
+      },
+      "validation": {
+        "score": 96,
+        "level": "human clinical study",
+        "summary": "Improved intelligibility and listening effort; invasive sensing prevents direct consumer deployment."
+      },
+      "license": "MIT",
+      "status": "open research code",
+      "inMelina": false,
+      "githubRepo": "naplab/Real-Time-Brain-Controlled-Hearing",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/naplab/Real-Time-Brain-Controlled-Hearing"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "convtasnet-whamr",
+      "label": "Conv-TasNet WHAMR",
+      "type": "model",
+      "primaryField": "evaluation",
+      "fields": [
+        "enhancement",
+        "evaluation"
+      ],
+      "year": 2020,
+      "stage": "research checkpoint",
+      "openness": 84,
+      "ecosystemValue": 74,
+      "description": "Public SpeechBrain-derived WHAMR checkpoint with unusual human hearing results. Binary inspection shows non-causal global normalization: it is not a 1 ms realtime model.",
+      "architecture": [
+        "Conv-TasNet",
+        "global layer norm",
+        "non-causal separator"
+      ],
+      "metrics": {
+        "stars": null,
+        "downloads": 17,
+        "parameters": null,
+        "latencyMs": "offline / non-causal",
+        "sampleRate": "16 kHz",
+        "hfLikes": 2,
+        "modelUpdatedAt": "2022-02-17T19:32:29.000Z"
+      },
+      "validation": {
+        "score": 89,
+        "level": "hearing-impaired human study",
+        "summary": "Reported +0.8 dB benefit for hearing-impaired and +5.7 dB for cochlear-implant listeners, but −0.9 dB for normal hearing; deployability is a red flag."
+      },
+      "license": "CC-BY-SA-4.0",
+      "status": "open checkpoint / non-realtime",
+      "inMelina": false,
+      "hfModel": "cankeles/ConvTasNet_WHAMR_enhsingle_16k",
+      "links": [
+        {
+          "label": "Hugging Face",
+          "url": "https://huggingface.co/cankeles/ConvTasNet_WHAMR_enhsingle_16k"
+        }
+      ]
+    },
+    {
+      "id": "phonak-deepsonic",
+      "label": "Phonak DEEPSONIC",
+      "type": "product",
+      "primaryField": "commercial",
+      "fields": [
+        "commercial",
+        "enhancement",
+        "audiology"
+      ],
+      "year": 2024,
+      "stage": "commercial",
+      "openness": 10,
+      "ecosystemValue": 96,
+      "description": "Dedicated DNN chip and speech-from-noise pipeline in Phonak Sphere products; trained on a manufacturer-reported 22 million sound samples.",
+      "architecture": [
+        "dedicated neural accelerator",
+        "proprietary DNN"
+      ],
+      "metrics": {
+        "stars": null,
+        "downloads": null,
+        "parameters": null,
+        "latencyMs": "realtime hearing aid",
+        "sampleRate": "proprietary"
+      },
+      "validation": {
+        "score": 86,
+        "level": "manufacturer + user studies",
+        "summary": "Manufacturer reports up to 10 dB SNR improvement; architecture and weights are closed."
+      },
+      "status": "closed commercial",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "Phonak technology",
+          "url": "https://www.phonak.com/en-int/hearing-devices/hearing-aids/audeo-sphere-infinio"
+        }
+      ]
+    },
+    {
+      "id": "signia-ix",
+      "label": "Signia Integrated Xperience",
+      "type": "product",
+      "primaryField": "commercial",
+      "fields": [
+        "commercial",
+        "spatial",
+        "audiology"
+      ],
+      "year": 2023,
+      "stage": "commercial",
+      "openness": 10,
+      "ecosystemValue": 89,
+      "description": "Conversation-centric multi-stream processing that tracks changing positions of several speakers.",
+      "architecture": [
+        "multi-stream acoustic scene analysis",
+        "directional processing"
+      ],
+      "validation": {
+        "score": 82,
+        "level": "manufacturer + studies",
+        "summary": "Commercial validation, with proprietary algorithms."
+      },
+      "status": "closed commercial",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "Signia IX",
+          "url": "https://www.signia.net/en/hearing-aids/integrated-xperience/"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "oticon-intent",
+      "label": "Oticon Intent DNN 2.0",
+      "type": "product",
+      "primaryField": "commercial",
+      "fields": [
+        "commercial",
+        "audiology",
+        "spatial"
+      ],
+      "year": 2024,
+      "stage": "commercial",
+      "openness": 9,
+      "ecosystemValue": 90,
+      "description": "Uses acoustic context plus motion and conversation sensors to drive an open-sound DNN processing strategy.",
+      "architecture": [
+        "DNN 2.0",
+        "4D sensors",
+        "open sound scene"
+      ],
+      "validation": {
+        "score": 86,
+        "level": "manufacturer + studies",
+        "summary": "Strong audiology research framing; core model remains proprietary."
+      },
+      "status": "closed commercial",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "Oticon Intent",
+          "url": "https://www.oticon.com/solutions/intent"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "widex-allure",
+      "label": "Widex Allure",
+      "type": "product",
+      "primaryField": "commercial",
+      "fields": [
+        "commercial",
+        "audiology",
+        "enhancement"
+      ],
+      "year": 2025,
+      "stage": "commercial",
+      "openness": 9,
+      "ecosystemValue": 85,
+      "description": "Sound-quality-focused platform with speech enhancement marketed as Speech Enhancer Pro and AI-driven fitting assistance.",
+      "architecture": [
+        "proprietary speech enhancer",
+        "audiological fitting"
+      ],
+      "validation": {
+        "score": 78,
+        "level": "manufacturer evidence",
+        "summary": "Commercial evidence; limited reproducible technical detail."
+      },
+      "status": "closed commercial",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "Widex Allure",
+          "url": "https://www.widex.com/en/hearing-aids/allure/"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "resound-vivia",
+      "label": "ReSound Vivia AI",
+      "type": "product",
+      "primaryField": "commercial",
+      "fields": [
+        "commercial",
+        "spatial",
+        "audiology"
+      ],
+      "year": 2025,
+      "stage": "commercial",
+      "openness": 9,
+      "ecosystemValue": 88,
+      "description": "Binaural commercial platform with a dedicated Deep Neural Network chip for speech in noise.",
+      "architecture": [
+        "DNN chip",
+        "binaural beamforming",
+        "directionality"
+      ],
+      "validation": {
+        "score": 82,
+        "level": "manufacturer + studies",
+        "summary": "Deployed at scale; model details are proprietary."
+      },
+      "status": "closed commercial",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "ReSound Vivia",
+          "url": "https://www.resound.com/en/hearing-aids/resound-hearing-aids/resound-vivia"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "starkey-omega",
+      "label": "Starkey Omega AI",
+      "type": "product",
+      "primaryField": "commercial",
+      "fields": [
+        "commercial",
+        "audiology",
+        "deployment"
+      ],
+      "year": 2025,
+      "stage": "commercial",
+      "openness": 8,
+      "ecosystemValue": 86,
+      "description": "On-device AI hearing platform combining speech processing, sensors and health-oriented features.",
+      "architecture": [
+        "proprietary neural processing",
+        "sensor fusion"
+      ],
+      "validation": {
+        "score": 78,
+        "level": "manufacturer evidence",
+        "summary": "Commercial deployment; independent architectural evidence is limited."
+      },
+      "status": "closed commercial",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "Starkey hearing aids",
+          "url": "https://www.starkey.com/hearing-aids"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "apple-haf",
+      "label": "AirPods Pro Hearing Aid Feature",
+      "type": "product",
+      "primaryField": "commercial",
+      "fields": [
+        "commercial",
+        "audiology",
+        "deployment"
+      ],
+      "year": 2024,
+      "stage": "regulated consumer feature",
+      "openness": 12,
+      "ecosystemValue": 95,
+      "description": "Software-defined OTC hearing assistance integrated with a consumer earbud, hearing test and personalized profile.",
+      "architecture": [
+        "personalized gain",
+        "consumer hearable DSP",
+        "iOS health profile"
+      ],
+      "validation": {
+        "score": 96,
+        "level": "clinical + regulatory",
+        "summary": "Clinically evaluated and regulated; no access to the internal enhancement model."
+      },
+      "status": "closed commercial",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "Apple Hearing Health",
+          "url": "https://www.apple.com/airpods-pro/hearing-health/"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "sherpa-onnx",
+      "label": "sherpa-onnx",
+      "type": "runtime",
+      "primaryField": "deployment",
+      "fields": [
+        "deployment",
+        "enhancement"
+      ],
+      "year": 2022,
+      "stage": "integrated runtime",
+      "openness": 100,
+      "ecosystemValue": 90,
+      "description": "Cross-platform offline speech inference toolkit used by Melina to package and stream several denoising models.",
+      "architecture": [
+        "C/C++ API",
+        "ONNX Runtime",
+        "streaming state"
+      ],
+      "metrics": {
+        "stars": 14358,
+        "downloads": null,
+        "forks": 1648,
+        "openIssues": 620,
+        "repositoryUpdatedAt": "2026-08-24T11:14:47Z"
+      },
+      "validation": {
+        "score": 86,
+        "level": "broad deployment",
+        "summary": "Actively maintained cross-platform inference infrastructure."
+      },
+      "license": "Apache-2.0",
+      "status": "open",
+      "inMelina": true,
+      "githubRepo": "k2-fsa/sherpa-onnx",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/k2-fsa/sherpa-onnx"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "onnx-runtime",
+      "label": "ONNX Runtime",
+      "type": "runtime",
+      "primaryField": "deployment",
+      "fields": [
+        "deployment"
+      ],
+      "year": 2018,
+      "stage": "integrated runtime",
+      "openness": 100,
+      "ecosystemValue": 96,
+      "description": "Execution layer behind Melina's portable model path on Android, Windows, macOS and Linux.",
+      "architecture": [
+        "graph optimizer",
+        "CPU/GPU/NPU execution providers"
+      ],
+      "metrics": {
+        "stars": 21621,
+        "downloads": null,
+        "forks": 4167,
+        "openIssues": 1614,
+        "repositoryUpdatedAt": "2026-08-24T13:49:51Z"
+      },
+      "validation": {
+        "score": 96,
+        "level": "production platform",
+        "summary": "Mature cross-platform production runtime."
+      },
+      "license": "MIT",
+      "status": "open",
+      "inMelina": true,
+      "githubRepo": "microsoft/onnxruntime",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/microsoft/onnxruntime"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "tract",
+      "label": "Tract · Sonos",
+      "type": "runtime",
+      "primaryField": "deployment",
+      "fields": [
+        "deployment",
+        "enhancement"
+      ],
+      "year": 2018,
+      "stage": "integrated transitive runtime",
+      "openness": 100,
+      "ecosystemValue": 84,
+      "description": "Rust neural-network inference engine originated at Sonos. DeepFilterNet's libDF uses Tract; Melina carries a narrow tract-linalg Windows ARM64 compatibility patch.",
+      "architecture": [
+        "Rust inference runtime",
+        "ONNX graph execution",
+        "CPU tensor kernels",
+        "tract-linalg"
+      ],
+      "metrics": {
+        "stars": 3042,
+        "downloads": null,
+        "forks": 281,
+        "openIssues": 113,
+        "repositoryUpdatedAt": "2026-08-24T16:23:09Z"
+      },
+      "validation": {
+        "score": 82,
+        "level": "production open source",
+        "summary": "Mature portable runtime used by libDF; Melina validates its Windows ARM64 assembler-selection patch in CI."
+      },
+      "license": "MIT OR Apache-2.0",
+      "status": "open",
+      "inMelina": true,
+      "githubRepo": "sonos/tract",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/sonos/tract"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "openmha",
+      "label": "openMHA",
+      "type": "runtime",
+      "primaryField": "audiology",
+      "fields": [
+        "audiology",
+        "deployment",
+        "spatial"
+      ],
+      "year": 2009,
+      "stage": "research platform",
+      "openness": 100,
+      "ecosystemValue": 93,
+      "description": "Open modular hearing-aid platform with realtime audio graphs, fitting algorithms and binaural research configurations.",
+      "architecture": [
+        "plugin graph",
+        "realtime C++",
+        "hearing-aid fitting"
+      ],
+      "metrics": {
+        "stars": 331,
+        "downloads": null,
+        "forks": 97,
+        "openIssues": 1,
+        "repositoryUpdatedAt": "2026-08-05T08:36:56Z"
+      },
+      "validation": {
+        "score": 91,
+        "level": "research platform",
+        "summary": "Purpose-built for hearing research and translational prototypes."
+      },
+      "license": "AGPL-3.0",
+      "status": "open / copyleft",
+      "inMelina": false,
+      "githubRepo": "HoerTech-gGmbH/openMHA",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/HoerTech-gGmbH/openMHA"
+        }
+      ],
+      "repositoryArchived": false
+    },
+    {
+      "id": "openmha-example34",
+      "label": "openMHA Example 34",
+      "type": "model",
+      "primaryField": "spatial",
+      "fields": [
+        "spatial",
+        "audiology",
+        "deployment"
+      ],
+      "year": 2026,
+      "stage": "open reference",
+      "openness": 100,
+      "ecosystemValue": 87,
+      "description": "Four-microphone binaural reference with three DNN enhancement approaches, including GCFnet and multichannel Wiener filtering.",
+      "architecture": [
+        "GCFnet mono/binaural",
+        "bMFWF",
+        "four microphones"
+      ],
+      "metrics": {
+        "stars": null,
+        "downloads": null,
+        "parameters": null,
+        "latencyMs": 5.4,
+        "sampleRate": "hearing-aid"
+      },
+      "validation": {
+        "score": 82,
+        "level": "reproducible research reference",
+        "summary": "Rare open binaural low-latency hearing configuration."
+      },
+      "license": "AGPL-3.0",
+      "status": "open",
+      "inMelina": false,
+      "links": [
+        {
+          "label": "Release 4.18",
+          "url": "https://github.com/HoerTech-gGmbH/openMHA/releases"
+        }
+      ]
+    },
+    {
+      "id": "clarity-cec3",
+      "label": "Clarity CEC3",
+      "type": "dataset",
+      "primaryField": "evaluation",
+      "fields": [
+        "evaluation",
+        "audiology",
+        "enhancement"
+      ],
+      "year": 2025,
+      "stage": "challenge",
+      "openness": 96,
+      "ecosystemValue": 95,
+      "description": "Hearing-aid enhancement challenge with individualized listeners and a strict maximum 5 ms future-context rule.",
+      "architecture": [
+        "listener simulation",
+        "HASPI/HASQI-style evaluation"
+      ],
+      "validation": {
+        "score": 97,
+        "level": "hearing-specific benchmark",
+        "summary": "The closest open benchmark to the target use case."
+      },
+      "status": "open challenge",
+      "links": [
+        {
+          "label": "Rules",
+          "url": "https://claritychallenge.org/docs/cec3/task_3/cec3_task3_rules"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "dns-challenge",
+      "label": "DNS Challenge",
+      "type": "dataset",
+      "primaryField": "evaluation",
+      "fields": [
+        "evaluation",
+        "enhancement"
+      ],
+      "year": 2020,
+      "stage": "benchmark ecosystem",
+      "openness": 95,
+      "ecosystemValue": 91,
+      "description": "Microsoft-led datasets, evaluation tracks and DNSMOS tooling that shaped modern speech enhancement.",
+      "validation": {
+        "score": 91,
+        "level": "large benchmark",
+        "summary": "High coverage and adoption, but not hearing-loss-specific."
+      },
+      "status": "open data + challenge",
+      "githubRepo": "microsoft/DNS-Challenge",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/microsoft/DNS-Challenge"
+        }
+      ],
+      "metrics": {
+        "stars": 1462,
+        "forks": 456,
+        "openIssues": 87,
+        "repositoryUpdatedAt": "2024-07-25T10:19:06Z"
+      },
+      "repositoryArchived": false
+    },
+    {
+      "id": "real-tse",
+      "label": "REAL-TSE 2026",
+      "type": "dataset",
+      "primaryField": "evaluation",
+      "fields": [
+        "evaluation",
+        "target"
+      ],
+      "year": 2026,
+      "stage": "challenge",
+      "openness": 94,
+      "ecosystemValue": 89,
+      "description": "Real-world target-speaker extraction challenge with enrollment, streaming baseline and domain-adaptation lessons.",
+      "validation": {
+        "score": 90,
+        "level": "real-world challenge",
+        "summary": "Strong future benchmark for target-speaker systems; online track permits up to 100 ms."
+      },
+      "status": "open",
+      "githubRepo": "REAL-TSE/wesep-real-tse",
+      "links": [
+        {
+          "label": "Repository",
+          "url": "https://github.com/REAL-TSE/wesep-real-tse"
+        }
+      ],
+      "metrics": {
+        "stars": 40,
+        "forks": 7,
+        "openIssues": 1,
+        "repositoryUpdatedAt": "2026-04-14T19:39:49Z"
+      },
+      "repositoryArchived": false
+    },
+    {
+      "id": "whamr",
+      "label": "WHAMR!",
+      "type": "dataset",
+      "primaryField": "evaluation",
+      "fields": [
+        "evaluation",
+        "enhancement",
+        "target"
+      ],
+      "year": 2020,
+      "stage": "benchmark dataset",
+      "openness": 92,
+      "ecosystemValue": 77,
+      "description": "Noisy and reverberant multi-speaker benchmark used by Conv-TasNet and separation research.",
+      "validation": {
+        "score": 72,
+        "level": "synthetic benchmark",
+        "summary": "Useful reproducible stress test; weaker match to live hearing devices."
+      },
+      "status": "open research data",
+      "links": [
+        {
+          "label": "Dataset",
+          "url": "http://wham.whisper.ai/"
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "id": "arch-minfir",
+      "label": "Minimum-phase FIR",
+      "type": "architecture",
+      "primaryField": "deployment",
+      "fields": [
+        "deployment",
+        "enhancement",
+        "audiology"
+      ],
+      "year": 2024,
+      "stage": "architecture",
+      "openness": 100,
+      "ecosystemValue": 90,
+      "description": "Directly predicts causal minimum-phase filters: a compelling route to sub-frame algorithmic delay.",
+      "metrics": {}
+    },
+    {
+      "id": "arch-asymstft",
+      "label": "Asymmetric STFT",
+      "type": "architecture",
+      "primaryField": "deployment",
+      "fields": [
+        "deployment",
+        "enhancement"
+      ],
+      "year": 2022,
+      "stage": "architecture",
+      "openness": 100,
+      "ecosystemValue": 86,
+      "description": "Uses a short analysis window and longer synthesis context to reduce algorithmic delay while keeping frequency resolution.",
+      "metrics": {}
+    },
+    {
+      "id": "arch-erb",
+      "label": "ERB filterbank",
+      "type": "architecture",
+      "primaryField": "audiology",
+      "fields": [
+        "audiology",
+        "enhancement",
+        "deployment"
+      ],
+      "year": 1990,
+      "stage": "architecture",
+      "openness": 100,
+      "ecosystemValue": 89,
+      "description": "Perceptually spaced auditory bands reduce compute and align controls with human frequency resolution.",
+      "metrics": {}
+    },
+    {
+      "id": "arch-beamformer",
+      "label": "Neural beamforming",
+      "type": "architecture",
+      "primaryField": "spatial",
+      "fields": [
+        "spatial",
+        "enhancement"
+      ],
+      "year": 2018,
+      "stage": "architecture",
+      "openness": 100,
+      "ecosystemValue": 94,
+      "description": "A network predicts spatial filters or statistics while classical beamforming preserves controllability and cues.",
+      "metrics": {}
+    },
+    {
+      "id": "arch-sdwmwf",
+      "label": "SDW-MWF",
+      "type": "architecture",
+      "primaryField": "spatial",
+      "fields": [
+        "spatial",
+        "audiology"
+      ],
+      "year": 2000,
+      "stage": "architecture",
+      "openness": 100,
+      "ecosystemValue": 88,
+      "description": "Spatial distortion-weighted multichannel Wiener filtering balances noise reduction and target preservation.",
+      "metrics": {}
+    },
+    {
+      "id": "arch-carfac",
+      "label": "CARFAC hearing model",
+      "type": "architecture",
+      "primaryField": "audiology",
+      "fields": [
+        "audiology",
+        "evaluation"
+      ],
+      "year": 2014,
+      "stage": "architecture",
+      "openness": 100,
+      "ecosystemValue": 91,
+      "description": "Cascaded asymmetric resonators model cochlear processing and enable differentiable normal/impaired listeners.",
+      "metrics": {}
+    },
+    {
+      "id": "arch-speaker",
+      "label": "Speaker embedding",
+      "type": "architecture",
+      "primaryField": "target",
+      "fields": [
+        "target",
+        "evaluation"
+      ],
+      "year": 2017,
+      "stage": "architecture",
+      "openness": 100,
+      "ecosystemValue": 93,
+      "description": "Compact identity representation that conditions extraction on the listener's chosen voice.",
+      "metrics": {}
+    },
+    {
+      "id": "arch-binaural",
+      "label": "Binaural cues · ITD/ILD",
+      "type": "architecture",
+      "primaryField": "spatial",
+      "fields": [
+        "spatial",
+        "audiology"
+      ],
+      "year": 1900,
+      "stage": "architecture",
+      "openness": 100,
+      "ecosystemValue": 96,
+      "description": "Interaural timing and level differences preserve localization and help separate competing sources.",
+      "metrics": {}
+    },
+    {
+      "id": "arch-wdrc",
+      "label": "WDRC & fitting",
+      "type": "architecture",
+      "primaryField": "audiology",
+      "fields": [
+        "audiology",
+        "commercial"
+      ],
+      "year": 1990,
+      "stage": "architecture",
+      "openness": 100,
+      "ecosystemValue": 95,
+      "description": "Wide dynamic range compression maps sound into an individual's residual audible range; enhancement must coexist with it.",
+      "metrics": {}
+    },
+    {
+      "id": "arch-convtasnet",
+      "label": "Conv-TasNet",
+      "type": "architecture",
+      "primaryField": "enhancement",
+      "fields": [
+        "enhancement",
+        "target"
+      ],
+      "year": 2019,
+      "stage": "architecture",
+      "openness": 100,
+      "ecosystemValue": 86,
+      "description": "Learned time-domain analysis and temporal convolutional separation; causal details determine whether it can stream.",
+      "metrics": {}
+    },
+    {
+      "id": "arch-cruse",
+      "label": "CRUSE",
+      "type": "architecture",
+      "primaryField": "deployment",
+      "fields": [
+        "deployment",
+        "enhancement"
+      ],
+      "year": 2020,
+      "stage": "architecture",
+      "openness": 100,
+      "ecosystemValue": 87,
+      "description": "Convolutional recurrent U-Net family that trades feature-map width, recurrence and STFT delay for quality.",
+      "metrics": {}
+    }
+  ],
+  "edges": [
+    {
+      "source": "melina",
+      "target": "gtcrn",
+      "type": "integrates",
+      "label": "bundled backend",
+      "weight": 5
+    },
+    {
+      "source": "melina",
+      "target": "rnnoise",
+      "type": "integrates",
+      "label": "bundled backend",
+      "weight": 5
+    },
+    {
+      "source": "melina",
+      "target": "ul-unas",
+      "type": "integrates",
+      "label": "bundled backend",
+      "weight": 5
+    },
+    {
+      "source": "melina",
+      "target": "deepfilternet3",
+      "type": "integrates",
+      "label": "desktop HQ backend",
+      "weight": 5
+    },
+    {
+      "source": "melina",
+      "target": "dpdfnet",
+      "type": "integrates",
+      "label": "four bundled variants",
+      "weight": 5
+    },
+    {
+      "source": "melina",
+      "target": "classic-dsp",
+      "type": "integrates",
+      "label": "deterministic baseline",
+      "weight": 5
+    },
+    {
+      "source": "melina",
+      "target": "silero-vad",
+      "type": "integrates",
+      "label": "VAD control",
+      "weight": 4
+    },
+    {
+      "source": "melina",
+      "target": "ten-vad",
+      "type": "integrates",
+      "label": "optional VAD",
+      "weight": 3
+    },
+    {
+      "source": "melina",
+      "target": "sherpa-onnx",
+      "type": "runs on",
+      "label": "model packaging",
+      "weight": 5
+    },
+    {
+      "source": "melina",
+      "target": "onnx-runtime",
+      "type": "runs on",
+      "label": "portable inference",
+      "weight": 5
+    },
+    {
+      "source": "gtcrn",
+      "target": "sherpa-onnx",
+      "type": "packaged by",
+      "weight": 3
+    },
+    {
+      "source": "ul-unas",
+      "target": "sherpa-onnx",
+      "type": "packaged by",
+      "weight": 3
+    },
+    {
+      "source": "dpdfnet",
+      "target": "ceva",
+      "type": "created by",
+      "weight": 4
+    },
+    {
+      "source": "rnnoise",
+      "target": "xiph",
+      "type": "created by",
+      "weight": 4
+    },
+    {
+      "source": "percepnet",
+      "target": "xiph",
+      "type": "created by",
+      "weight": 4
+    },
+    {
+      "source": "personalized-percepnet",
+      "target": "percepnet",
+      "type": "extends",
+      "weight": 4
+    },
+    {
+      "source": "personalized-percepnet",
+      "target": "bose-research",
+      "type": "researched by",
+      "weight": 3
+    },
+    {
+      "source": "tiny-lstms",
+      "target": "bose-research",
+      "type": "researched by",
+      "weight": 3
+    },
+    {
+      "source": "deepfilternet3",
+      "target": "arch-erb",
+      "type": "uses architecture",
+      "weight": 4
+    },
+    {
+      "source": "percepnet",
+      "target": "arch-erb",
+      "type": "uses architecture",
+      "weight": 4
+    },
+    {
+      "source": "rnnoise",
+      "target": "arch-erb",
+      "type": "uses bands",
+      "weight": 2
+    },
+    {
+      "source": "dtln",
+      "target": "arch-convtasnet",
+      "type": "hybrid relation",
+      "weight": 1
+    },
+    {
+      "source": "convtasnet-whamr",
+      "target": "arch-convtasnet",
+      "type": "uses architecture",
+      "weight": 5
+    },
+    {
+      "source": "convtasnet-whamr",
+      "target": "whamr",
+      "type": "trained / validated on",
+      "weight": 5
+    },
+    {
+      "source": "semantic-hearing",
+      "target": "uw-mil",
+      "type": "created by",
+      "weight": 5
+    },
+    {
+      "source": "look-once",
+      "target": "uw-mil",
+      "type": "created by",
+      "weight": 5
+    },
+    {
+      "source": "clearbuds",
+      "target": "uw-mil",
+      "type": "created by",
+      "weight": 5
+    },
+    {
+      "source": "look-once",
+      "target": "arch-speaker",
+      "type": "uses architecture",
+      "weight": 5
+    },
+    {
+      "source": "personalized-percepnet",
+      "target": "arch-speaker",
+      "type": "uses architecture",
+      "weight": 4
+    },
+    {
+      "source": "semantic-hearing",
+      "target": "arch-binaural",
+      "type": "preserves cues",
+      "weight": 5
+    },
+    {
+      "source": "clearbuds",
+      "target": "arch-binaural",
+      "type": "uses cues",
+      "weight": 5
+    },
+    {
+      "source": "real-tse",
+      "target": "arch-speaker",
+      "type": "evaluates",
+      "weight": 4
+    },
+    {
+      "source": "look-once",
+      "target": "real-tse",
+      "type": "adaptation candidate",
+      "weight": 2
+    },
+    {
+      "source": "hearvana",
+      "target": "uw-mil",
+      "type": "research spinout",
+      "weight": 5
+    },
+    {
+      "source": "aurchestra",
+      "target": "uw-mil",
+      "type": "created by",
+      "weight": 5
+    },
+    {
+      "source": "proactive-hearing",
+      "target": "uw-mil",
+      "type": "created by",
+      "weight": 5
+    },
+    {
+      "source": "proactive-hearing",
+      "target": "hearvana",
+      "type": "research / company lineage",
+      "weight": 4
+    },
+    {
+      "source": "tf-mlpnet",
+      "target": "uw-mil",
+      "type": "created by",
+      "weight": 5
+    },
+    {
+      "source": "sound-bubble",
+      "target": "uw-mil",
+      "type": "created by",
+      "weight": 5
+    },
+    {
+      "source": "waveformer",
+      "target": "uw-mil",
+      "type": "created by",
+      "weight": 5
+    },
+    {
+      "source": "hybridbeam",
+      "target": "uw-mil",
+      "type": "created by",
+      "weight": 5
+    },
+    {
+      "source": "aurchestra",
+      "target": "semantic-hearing",
+      "type": "extends programmable hearing",
+      "weight": 4
+    },
+    {
+      "source": "aurchestra",
+      "target": "tf-mlpnet",
+      "type": "low-power model variant",
+      "weight": 5
+    },
+    {
+      "source": "aurchestra",
+      "target": "waveformer",
+      "type": "compares baseline",
+      "weight": 3
+    },
+    {
+      "source": "aurchestra",
+      "target": "arch-binaural",
+      "type": "HRTF spatial rendering",
+      "weight": 5
+    },
+    {
+      "source": "proactive-hearing",
+      "target": "arch-binaural",
+      "type": "egocentric cues",
+      "weight": 5
+    },
+    {
+      "source": "proactive-hearing",
+      "target": "real-tse",
+      "type": "benchmark relation",
+      "weight": 3
+    },
+    {
+      "source": "tf-mlpnet",
+      "target": "neural-aids",
+      "type": "hardware deployment family",
+      "weight": 5
+    },
+    {
+      "source": "sound-bubble",
+      "target": "arch-binaural",
+      "type": "six-microphone spatial cues",
+      "weight": 5
+    },
+    {
+      "source": "hybridbeam",
+      "target": "arch-beamformer",
+      "type": "uses architecture",
+      "weight": 5
+    },
+    {
+      "source": "hybridbeam",
+      "target": "arch-binaural",
+      "type": "directional hearing",
+      "weight": 4
+    },
+    {
+      "source": "deep-fir",
+      "target": "google-research",
+      "type": "created by",
+      "weight": 5
+    },
+    {
+      "source": "deep-fir",
+      "target": "arch-minfir",
+      "type": "uses architecture",
+      "weight": 5
+    },
+    {
+      "source": "googlears",
+      "target": "google-research",
+      "type": "created by",
+      "weight": 5
+    },
+    {
+      "source": "googlears",
+      "target": "arch-beamformer",
+      "type": "uses architecture",
+      "weight": 5
+    },
+    {
+      "source": "googlears",
+      "target": "arch-binaural",
+      "type": "hearing context",
+      "weight": 3
+    },
+    {
+      "source": "dal",
+      "target": "afhi",
+      "type": "created by",
+      "weight": 5
+    },
+    {
+      "source": "afhi",
+      "target": "google-research",
+      "type": "collaboration",
+      "weight": 4
+    },
+    {
+      "source": "dal",
+      "target": "arch-carfac",
+      "type": "differentiates through",
+      "weight": 5
+    },
+    {
+      "source": "dal",
+      "target": "arch-wdrc",
+      "type": "alternative objective",
+      "weight": 2
+    },
+    {
+      "source": "cruse-3ms",
+      "target": "microsoft-research",
+      "type": "studied by",
+      "weight": 5
+    },
+    {
+      "source": "cruse-3ms",
+      "target": "arch-cruse",
+      "type": "uses architecture",
+      "weight": 5
+    },
+    {
+      "source": "cruse-3ms",
+      "target": "arch-asymstft",
+      "type": "latency design",
+      "weight": 3
+    },
+    {
+      "source": "dns-challenge",
+      "target": "microsoft-research",
+      "type": "led by",
+      "weight": 4
+    },
+    {
+      "source": "rt-tango",
+      "target": "arch-erb",
+      "type": "uses architecture",
+      "weight": 4
+    },
+    {
+      "source": "rt-tango",
+      "target": "arch-asymstft",
+      "type": "uses architecture",
+      "weight": 5
+    },
+    {
+      "source": "rt-tango",
+      "target": "arch-sdwmwf",
+      "type": "uses architecture",
+      "weight": 5
+    },
+    {
+      "source": "rt-tango",
+      "target": "arch-binaural",
+      "type": "uses cues",
+      "weight": 4
+    },
+    {
+      "source": "mn-tango",
+      "target": "rt-tango",
+      "type": "efficiency lineage",
+      "weight": 4
+    },
+    {
+      "source": "neural-aids",
+      "target": "arch-wdrc",
+      "type": "hearing pipeline",
+      "weight": 3
+    },
+    {
+      "source": "orka-model",
+      "target": "orka",
+      "type": "created by",
+      "weight": 4
+    },
+    {
+      "source": "orka-model",
+      "target": "clarity-cec3",
+      "type": "validated on",
+      "weight": 5
+    },
+    {
+      "source": "clarity-cec3",
+      "target": "clarity",
+      "type": "run by",
+      "weight": 5
+    },
+    {
+      "source": "clarity-cec3",
+      "target": "arch-wdrc",
+      "type": "listener fitting",
+      "weight": 4
+    },
+    {
+      "source": "openmha",
+      "target": "oldenburg",
+      "type": "created by",
+      "weight": 5
+    },
+    {
+      "source": "openmha-example34",
+      "target": "openmha",
+      "type": "runs on",
+      "weight": 5
+    },
+    {
+      "source": "openmha-example34",
+      "target": "arch-beamformer",
+      "type": "compares",
+      "weight": 3
+    },
+    {
+      "source": "openmha-example34",
+      "target": "arch-binaural",
+      "type": "preserves cues",
+      "weight": 4
+    },
+    {
+      "source": "openmha",
+      "target": "arch-wdrc",
+      "type": "implements",
+      "weight": 4
+    },
+    {
+      "source": "columbia-bci",
+      "target": "columbia-naplab",
+      "type": "created by",
+      "weight": 5
+    },
+    {
+      "source": "columbia-bci",
+      "target": "arch-speaker",
+      "type": "steers extraction",
+      "weight": 4
+    },
+    {
+      "source": "clearervoice",
+      "target": "alibaba-iic",
+      "type": "created by",
+      "weight": 5
+    },
+    {
+      "source": "tiger",
+      "target": "alibaba-iic",
+      "type": "research ecosystem",
+      "weight": 3
+    },
+    {
+      "source": "cofi-lite",
+      "target": "arch-cruse",
+      "type": "comparable target",
+      "weight": 1
+    },
+    {
+      "source": "clearervoice",
+      "target": "dns-challenge",
+      "type": "benchmarked with",
+      "weight": 2
+    },
+    {
+      "source": "audatic",
+      "target": "sonova",
+      "type": "acquired by",
+      "label": "team + technology transfer",
+      "weight": 5
+    },
+    {
+      "source": "phonak-deepsonic",
+      "target": "sonova",
+      "type": "commercialized by",
+      "weight": 5
+    },
+    {
+      "source": "phonak-deepsonic",
+      "target": "audatic",
+      "type": "research lineage",
+      "weight": 4
+    },
+    {
+      "source": "signia-ix",
+      "target": "wsa",
+      "type": "commercialized by",
+      "weight": 5
+    },
+    {
+      "source": "widex-allure",
+      "target": "wsa",
+      "type": "commercialized by",
+      "weight": 5
+    },
+    {
+      "source": "oticon-intent",
+      "target": "demant",
+      "type": "commercialized by",
+      "weight": 5
+    },
+    {
+      "source": "resound-vivia",
+      "target": "gn",
+      "type": "commercialized by",
+      "weight": 5
+    },
+    {
+      "source": "starkey-omega",
+      "target": "starkey",
+      "type": "commercialized by",
+      "weight": 5
+    },
+    {
+      "source": "apple-haf",
+      "target": "apple",
+      "type": "commercialized by",
+      "weight": 5
+    },
+    {
+      "source": "phonak-deepsonic",
+      "target": "arch-wdrc",
+      "type": "hearing fitting",
+      "weight": 3
+    },
+    {
+      "source": "signia-ix",
+      "target": "arch-binaural",
+      "type": "spatial processing",
+      "weight": 3
+    },
+    {
+      "source": "oticon-intent",
+      "target": "arch-binaural",
+      "type": "spatial processing",
+      "weight": 3
+    },
+    {
+      "source": "resound-vivia",
+      "target": "arch-beamformer",
+      "type": "spatial processing",
+      "weight": 3
+    },
+    {
+      "source": "apple-haf",
+      "target": "arch-wdrc",
+      "type": "personalized fitting",
+      "weight": 4
+    },
+    {
+      "source": "onnx-runtime",
+      "target": "microsoft-research",
+      "type": "Microsoft ecosystem",
+      "weight": 2
+    },
+    {
+      "source": "sherpa-onnx",
+      "target": "onnx-runtime",
+      "type": "uses runtime",
+      "weight": 5
+    },
+    {
+      "source": "deepfilternet3",
+      "target": "tract",
+      "type": "libDF inference runtime",
+      "weight": 5
+    },
+    {
+      "source": "melina",
+      "target": "tract",
+      "type": "Windows ARM64 compatibility patch",
+      "weight": 4
+    },
+    {
+      "source": "semantic-hearing",
+      "target": "melina",
+      "type": "future candidate",
+      "weight": 2
+    },
+    {
+      "source": "look-once",
+      "target": "melina",
+      "type": "future candidate",
+      "weight": 2
+    },
+    {
+      "source": "aurchestra",
+      "target": "melina",
+      "type": "highest-value adaptation candidate",
+      "weight": 4
+    },
+    {
+      "source": "proactive-hearing",
+      "target": "melina",
+      "type": "target-conversation candidate",
+      "weight": 4
+    },
+    {
+      "source": "sound-bubble",
+      "target": "melina",
+      "type": "multimicrophone research path",
+      "weight": 3
+    },
+    {
+      "source": "deep-fir",
+      "target": "melina",
+      "type": "replication target",
+      "weight": 2
+    },
+    {
+      "source": "rt-tango",
+      "target": "melina",
+      "type": "replication target",
+      "weight": 2
+    },
+    {
+      "source": "openmha-example34",
+      "target": "melina",
+      "type": "architecture reference",
+      "weight": 2
+    },
+    {
+      "source": "clarity-cec3",
+      "target": "melina",
+      "type": "validation target",
+      "weight": 4
+    },
+    {
+      "source": "real-tse",
+      "target": "melina",
+      "type": "future benchmark",
+      "weight": 3
+    }
+  ]
+}

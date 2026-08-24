@@ -8,6 +8,7 @@
 
 <p align="center">
   <a href="https://michaelxbelmonte.github.io/melina-audio/">Website</a> ·
+  <a href="https://michaelxbelmonte.github.io/melina-audio/atlas.html">Hearing Intelligence Atlas</a> ·
   <a href="UNIVERSAL.md">Platforms</a> ·
   <a href="BRAND.md">Brand guide</a>
 </p>
@@ -30,6 +31,20 @@ Melina is an experimental, local assistive-listening processor for Android, macO
 - Real-time input/output waveforms, voice probability, DSP load, and per-stage telemetry.
 - Local session logging with input/output WAV files, metrics, events, settings changes, and A/B outcomes.
 - Equal-input benchmarks that process the same recording through every backend on a physical Android device.
+- A dynamic 3D ecosystem atlas mapping open models, proprietary hearing systems, research hubs, architectures, evidence, stars, and downloads.
+
+## Hearing Intelligence Atlas
+
+The static site includes an interactive, dependency-free 3D graph built from
+[`docs/data/ecosystem.json`](docs/data/ecosystem.json). It separates technical relevance,
+organizational scale, openness, and validation so that GitHub popularity is never presented as
+clinical evidence. Refresh public GitHub and Hugging Face metrics locally with:
+
+```bash
+node scripts/update_ecosystem_graph.mjs
+```
+
+GitHub Pages also performs this refresh on every Atlas deployment and on a weekly schedule.
 
 ## Processing pipeline
 

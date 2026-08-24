@@ -5,7 +5,10 @@ on:
     branches: [main]
     paths:
       - "docs/**"
+      - "scripts/update_ecosystem_graph.mjs"
       - ".github/workflows/pages.yml"
+  schedule:
+    - cron: "17 5 * * 1"
   workflow_dispatch:
 
 permissions:
@@ -26,6 +29,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+      - name: Refresh ecosystem metrics
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/update_ecosystem_graph.mjs
       - name: Configure Pages
         uses: actions/configure-pages@v6
       - name: Upload landing page
