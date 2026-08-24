@@ -53,22 +53,6 @@ perl -0pi -e \
     "$source_root/libDF/Cargo.toml"
 cp "$project_root/desktop/deepfilter/Cargo.lock" "$source_root/Cargo.lock"
 
-kernel="$(uname -s | tr '[:upper:]' '[:lower:]')"
-machine="${RUNNER_ARCH:-$(uname -m)}"
-machine="$(printf '%s' "$machine" | tr '[:upper:]' '[:lower:]')"
-
-# MSVC's cl.exe does not assemble the generated ARM64 .S kernels used by tract-linalg.
-# The official Windows ARM64 runner includes clang-cl, which accepts those sources while
-# preserving the aarch64-pc-windows-msvc ABI expected by Rust and jpackage.
-if [[ "$kernel" == mingw* || "$kernel" == msys* || "$kernel" == cygwin* ]] &&
-    [[ "$machine" == arm64 || "$machine" == aarch64 ]]; then
-    command -v clang-cl >/dev/null || {
-        echo "clang-cl non trovato: necessario per DeepFilterNet su Windows ARM64." >&2
-        exit 1
-    }
-    export CC_aarch64_pc_windows_msvc="${CC_aarch64_pc_windows_msvc:-clang-cl}"
-fi
-
 CARGO_TARGET_DIR="$target_root" cargo build \
     --release \
     --locked \
@@ -77,6 +61,9 @@ CARGO_TARGET_DIR="$target_root" cargo build \
     --no-default-features \
     --features capi
 
+kernel="$(uname -s | tr '[:upper:]' '[:lower:]')"
+machine="${RUNNER_ARCH:-$(uname -m)}"
+machine="$(printf '%s' "$machine" | tr '[:upper:]' '[:lower:]')"
 case "$machine" in
     arm64|aarch64) architecture="aarch64" ;;
     x64|x86_64|amd64) architecture="x64" ;;

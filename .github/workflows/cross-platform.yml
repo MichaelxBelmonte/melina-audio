@@ -17,16 +17,22 @@ jobs:
         include:
           - os: macos-26
             target: macos-arm64
+            deepfilter: true
           - os: macos-26-intel
             target: macos-x64
+            deepfilter: true
           - os: ubuntu-24.04
             target: linux-x64
+            deepfilter: true
           - os: ubuntu-24.04-arm
             target: linux-arm64
+            deepfilter: true
           - os: windows-2025
             target: windows-x64
+            deepfilter: true
           - os: windows-11-vs2026-arm
             target: windows-arm64
+            deepfilter: false
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v7
@@ -36,9 +42,11 @@ jobs:
           java-version: "21"
       - uses: gradle/actions/setup-gradle@v6
       - uses: dtolnay/rust-toolchain@stable
+        if: matrix.deepfilter
         with:
           toolchain: "1.97.1"
       - name: Build DeepFilterNet native runtime
+        if: matrix.deepfilter
         shell: bash
         run: bash scripts/build_deepfilter_desktop.sh
       - name: Test and package

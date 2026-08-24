@@ -12,15 +12,19 @@ neural alignment, hearing-oriented fitting, compressor, limiter, settings, and t
 | Android 12+ | ARM64 | APK | Full Android backend set |
 | Android 12+ | x86_64 | APK | GTCRN, DPDFNet, RNNoise, Classic DSP |
 | macOS | Apple Silicon, Intel | Desktop GUI/CLI | Full nine-backend set |
-| Windows | x64, ARM64 | Desktop GUI/CLI | Full nine-backend set |
+| Windows | x64 | Desktop GUI/CLI | Full nine-backend set |
+| Windows | ARM64 | Desktop GUI/CLI | Eight backends; libDF excluded |
 | Linux | x64, ARM64 | Desktop GUI/CLI | Full nine-backend set |
 
 The desktop Gradle build selects the official sherpa-onnx native library matching the build host.
 UL-UNAS calls the C API of the same packaged ONNX Runtime, including on Apple Silicon and ARM64 PCs.
 DeepFilterNet3 uses the official libDF source at a pinned commit and dependency lock. The CI matrix
 builds all six OS/architecture combinations independently, so each artifact contains only its own
-native runtimes. `packageAppImage` uses `jpackage` to include Java; users do not need to install a
-JDK. Desktop-only builds pass `-Pmelina.desktopOnly`, so no Android SDK is required or configured.
+native runtimes. Upstream tract 0.21 cannot currently assemble its generated kernels for the
+Windows ARM64 MSVC ABI, so that artifact omits libDF and automatically hides DeepFilterNet3 while
+retaining the other eight processors. `packageAppImage` uses `jpackage` to include Java; users do
+not need to install a JDK. Desktop-only builds pass `-Pmelina.desktopOnly`, so no Android SDK is
+required or configured.
 
 ## Module boundaries
 
@@ -52,7 +56,7 @@ desktop
 
 ## Remaining parity work
 
-All nine enhancement backends are available on Android ARM64 and every desktop target; Android
-x86_64 retains the seven portable Android backends. Desktop session logging and the detailed
-Android plots still need desktop UI/storage adapters for complete UX parity. iOS/iPadOS requires a
-separate Swift audio-device adapter and is not currently a supported target.
+All nine enhancement backends are available on Android ARM64 and desktop targets except Windows
+ARM64; Android x86_64 retains the seven portable Android backends. Desktop session logging and the
+detailed Android plots still need desktop UI/storage adapters for complete UX parity. iOS/iPadOS
+requires a separate Swift audio-device adapter and is not currently a supported target.
