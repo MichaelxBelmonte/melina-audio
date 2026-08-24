@@ -1,3 +1,5 @@
+import java.util.zip.ZipFile
+
 plugins {
     id("org.jetbrains.kotlin.jvm")
     application
@@ -123,7 +125,7 @@ tasks.register("verifyDeepFilterPackaging") {
         }
         val expectedResource = "native/$desktopPlatform/$deepFilterLibraryName"
         val jarFile = tasks.named<org.gradle.jvm.tasks.Jar>("jar").get().archiveFile.get().asFile
-        java.util.zip.ZipFile(jarFile).use { archive ->
+        ZipFile(jarFile).use { archive ->
             check(archive.getEntry(expectedResource) != null) {
                 "DeepFilterNet runtime not packaged in ${jarFile.name}: $expectedResource"
             }
